@@ -11,4 +11,4 @@ im a youtuber with 300+ subscribers, game maker and coder
 
 
 [youtube]: https://www.youtube.com/channel/UCWFBwi8xj23GzE5SW3rlD1Q
-[discord] : https://discord.gg/tYwnHCme4W
+[discord]: https://discord.gg/tYwnHCme4W
