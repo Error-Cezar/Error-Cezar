@@ -1,0 +1,25 @@
+            !mine - Summons notes that the player must avoid or else they take a lot of damage
+            !warning - Summons notes that the player must hit or else they take a lot of damage
+            !heal - Summons a note that heals the player if they hit it
+            !spin - Spins the notes around
+            !songslower - Slows down the song for 15 seconds
+            !songfaster - Speeds up the song for 15 seconds
+            !scrollfaster - Makes the notes scroll faster for 11 seconds
+            !scrollslower - Makes the notes scroll slower for 11 seconds
+            !scrollswitch - Forces a switch from upscroll to downscroll and vice versa
+            !colorblind - Makes the game grayscale for 16 seconds
+            !rainbow - Makes all notes have randomized colors for 20 seconds
+            !blur - Blurs the game for 12 seconds
+            !lag - Makes notes scroll in a jittery manner for 12 seconds
+            !cover - Covers up the screen with an image for 12 seconds
+            !mixup - Changes the horizontal position of the notes for 10 seconds
+            !ghost - Makes notes translucent for 20 seconds
+            !wiggle - Makes notes wiggle around, modchart style, for 20 seconds
+            !flashbang - Makes the screen flash white for a split second
+            !nostrum - Makes the strumline invisible for 13 seconds
+            !jackspam - Spawns a bunch of repeated notes of the same direction
+            !spam - Spawns a bunch of random notes
+            !sever - Disables input of a specific direction for 6 seconds
+            !shake - Makes the screen shake for 8 seconds
+            !poison - The player will take damage over time for 8 seconds
+            !dizzy - Rotates the view left and right for 8 seconds
