@@ -14,6 +14,7 @@ Also known as YetAnotherDumbBoi
 # Current Projects  
 
 * [Roblox Scripts](https://github.com/Error-Cezar/Roblox-Scripts)
+* [UnnamedHub](https://github.com/Dumb-Utility/UnnamedHub)
 * Other stuff not on GitHub
 
 [youtube]: https://www.youtube.com/channel/UCWFBwi8xj23GzE5SW3rlD1Q
