@@ -22,8 +22,8 @@ I am also on the other hand working on personal projects that you can find down 
 
 [![demo1](https://github-readme-stats.vercel.app/api/pin/?username=Error-Cezar&repo=VR-Project&theme=algolia)][demo1]
 [![demo2](https://github-readme-stats.vercel.app/api/pin/?username=Error-Cezar&repo=RobloxLibrary&theme=algolia)][demo2]
-[![demo3](https://github-readme-stats.vercel.app/api/pin/?username=Error-Cezar&repo=HCR-Bot&theme=algolia)][demo1]
-[![demo4](https://github-readme-stats.vercel.app/api/pin/?username=RigidStudios&repo=roblox-discord-presence&theme=algolia&show_owner=true)][demo1]
+[![demo3](https://github-readme-stats.vercel.app/api/pin/?username=Error-Cezar&repo=HCR-Bot&theme=algolia)][demo3]
+[![demo4](https://github-readme-stats.vercel.app/api/pin/?username=RigidStudios&repo=roblox-discord-presence&theme=algolia&show_owner=true)][demo4]
 
 [youtube]: https://www.youtube.com/channel/UCWFBwi8xj23GzE5SW3rlD1Q
 [discord]: https://discord.gg/tYwnHCme4W
