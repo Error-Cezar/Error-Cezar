@@ -13,7 +13,7 @@ Here are some of my stats here on GitHub
 [![langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Error-Cezar&layout=compact&theme=algolia&langs_count=4)][langs]
 
 ## Current Projects
-I am currently working with [Mountain Interactive](https://mountaininteractive.com) on their projects within [ROBLOX](https://roblox.com/) - a multi-platform game hosting game <br>
+I am currently working with [Mountain Interactive](https://mountaininteractive.com) *[https://mountaininteractive.com]* on their projects within [ROBLOX](https://roblox.com/) *[https://roblox.com]* - a multi-platform game hosting game <br>
 *(basically games in a game)*
 <br><br>
 I am also on the other hand working on personal projects that you can find down below. ~~in the description~~
