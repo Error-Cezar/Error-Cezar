@@ -26,7 +26,7 @@ I am also on the other hand working on personal projects that you can find down 
 [![demo4](https://github-readme-stats.vercel.app/api/pin/?username=RigidStudios&repo=roblox-discord-presence&theme=algolia&show_owner=true)][demo4]
 
 [youtube]: https://www.youtube.com/channel/UCWFBwi8xj23GzE5SW3rlD1Q
-[discord]: https://discord.gg/tYwnHCme4W
+[discord]: https://discord.com/users/362991657236561923
 [mystats]: https://github.com/Error-Cezar
 
 [demo1]: https://github.com/Error-Cezar/VR-Project
