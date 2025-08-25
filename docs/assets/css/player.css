@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+body {
+  background-color: #ddd;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.player-container {
+  position: absolute;
+  padding: 10px;
+}
+
+.player-container .song-info {
+  background-color: #000;
+  margin: 0 15px;
+  padding: 5px 15px 5px 25px;
+  border-radius: 15px 15px 0 0;
+}
+
+.player-container .song-info .song-name {
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px;
+  margin: 3px 0 10px;
+}
+
+.player-container .song-info .progress-bar {
+  background-color: #505050;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.player-container .song-info .progress-bar .fill-bar {
+  width: 0;
+  height: 6px;
+  background: #1db954;
+  border-radius: 20px;
+}
+
+.player-container .song-info .time {
+  color: #b9b9b9;
+  font-size: 15px;
+  margin: 10px 0;
+}
+
+.player-container .disk {
+  max-width: 120px;
+}
+
+.player-container .disk .active {
+  animation: rotate 3s linear 0s infinite forwards;
+}
+
+.player-container .disk .cover {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  background-image: url('../music/covers/default.png');
+  top: 105px;
+  left: 30px;
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-size: cover;
+  border-radius: 50%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
+}
+
+.player-container .controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  background-color: #292929;
+  width: 400px;
+  height: 65px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.player-container .controls #play {
+  background-color: #1db954;
+  color: #fff;
+  padding: 15px 17px 14px 18px;
+  font-size: 18px;
+  border-radius: 50%;
+  transition: all 0.3 ease;
+}
+
+.player-container .controls #play:hover {
+  background: #189945;
+}
+
+.player-container .controls i {
+  padding: 30px 8px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #919191;
+  transition: all 0.3 ease;
+}
+
+.player-container .controls i:hover {
+  color: #fff;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}

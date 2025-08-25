@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title></title>
+  <link rel="stylesheet" type="text/css" href="styles.css"> 
+  <link rel="stylesheet" href="./assets/css/player.css">
+  <link rel="stylesheet" href="./assets/css/tooltip.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="icon" type="image/x-icon" href="./assets/favico/default.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.2/dist/vanilla-tilt.min.js"></script>
+  <link rel="stylesheet" href="./assets/css/tilt-effect.css">
+</head>
+<body>
+  <div id="terminal">
+    <div id="terminal-header">
+      <div id="terminal-buttons">
+
+        <div class="terminal-button" id="close-button"></div>
+        <div class="terminal-button" id="minimize-button"></div>
+        <div class="terminal-button" id="maximize-button"></div>
+      </div>
+    </div>
+    <div id="terminal-content">
+      <p id="terminal-text"></p>
+    </div>
+  </div>
+
+  <div id="video-background">
+    <video autoplay muted loop id="myVideo">
+      <source src="./assets/back/sniper.mp4" type="video/mp4">
+      Your browser does not support HTML5 video.
+    </video>
+
+    <div id="audio-background">
+      <div id="music-controls">
+        <input type="range" id="volume-slider" min="0" max="100" value="50">
+        <div id="progress-container">
+          <div id="progress-bar"></div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+    <div id="video-overlay"></div>
+    <div id="blurred-box" class="tilt-element">
+      <img id="profile-picture" src="./assets/pfp/default.webp" alt="Profile Picture">
+      <img id="avatar-frame" src="" alt="Avatar Frame">
+      <p id="username-container" style="color: white; font-weight: bold; font-size: 32px;">
+        <span id="username"></span>
+        <span id="typing-cursor">|</span>
+      </p>
+      <div class="badges-container">
+        <img src="./assets/badge/love.png" alt="heart badge">
+      </div>
+
+      <div class="user-description">
+
+                <div class="player-container">
+                  <div class="song-info">
+                    <div class="song-name"> N/A </div>
+                    <div class="progress-bar">
+                      <div class="fill-bar"></div>
+                    </div>
+                    <div class="time">0:00 - 0:00</div>
+                  </div>
+                  <div class="disk">
+                    <div id="cover" class="cover"></div>
+                  </div>
+                  <div class="controls">
+                    <i id="prev" class="prev-btn fa-solid fa-backward"></i>
+                    <i id="play" class="play-btn fa-solid fa-play"></i>
+                    <i id="next" class="next-btn fa-solid fa-forward"></i>
+                  </div>
+                </div>
+
+      </div>
+
+      <div class="discord-widget">
+        <div class="discord-content">
+          <div class="discord-icon">
+            <img id="discord-avatar" src="" alt="Discord Avatar" draggable="false" loading="lazy">
+          </div>
+          <div class="discord-meta">
+            <b id="discord-username"></b>
+            <div>
+              <span id="discord-status-dot"></span>
+              <span id="discord-status-text"></span>
+            </div>
+          </div>
+        </div>
+        <div class="discord-activity">
+          <div id="discord-activity-info">
+            <div id="discord-album-art"></div>
+            <div class="discord-activity-content">
+              <div id="discord-activity-name"></div>
+              <div id="discord-activity-details"></div>
+              <div id="discord-activity-state"></div>
+            </div>
+          </div>
+          <div id="discord-no-activity">I'm not currently doing anything!</div>
+        </div>
+      </div>
+
+      <div class="links">
+        <a href="https://example.com/" data-tooltip="Copy Discord username" target="_blank">
+          <i class="fab fa-discord"></i>
+        </a> 
+        <a href="https://github.com/Error-Cezar" data-tooltip="Open GitHub" target="_blank">
+          <i class="fa-brands fa-github"></i>
+        </a> 
+        <a href="https://x.com/errorisntpublic" data-tooltip="Open Twitter" target="_blank">
+          <i class="fa-brands fa-twitter"></i>
+        </a> 
+        <!-- bc1q329swh9rlpnn5pw97k4crjhsm6nhjlzgl4u7hl -->
+        <a href="https://x.com/errorisntpublic" data-tooltip="Copy BTC Wallet" target="_blank">
+          <i class="fa-brands fa-bitcoin"></i>
+        </a> 
+        <!-- 0xeeAbF08161eFC9dadaFdB8A410400C27511f2b42 -->
+        <a href="https://x.com/errorisntpublic" data-tooltip="Copy ETH Wallet" target="_blank">
+          <i class="fa-brands fa-ethereum"></i>
+        </a> 
+        <!-- error.802 -->
+        <a href="https://x.com/errorisntpublic" data-tooltip="Copy Signal username" target="_blank">
+          <i class="fa-brands fa-signal-messenger"></i>
+        </a> 
+      </div>
+    </div>
+  </div>
+  
+  <script src="./assets/js/settings.js"></script>
+  <script src="./assets/js/title-screen.js"></script>
+
+  <script src="./assets/js/audio-visualizer.js"></script>
+  <script src="./assets/js/music-player.js"></script>
+
+  <script src="./assets/js/lanyard.js"></script>
+  <script src="./assets/js/discord.js"></script>
+  <script src="./assets/js/title.js"></script>
+  <script src="./assets/js/username-animation.js"></script>
+  <script src="./assets/js/tilt-effect.js"></script>
+  <script src="./assets/js/audio-visualizer.js"></script>
+  <script src="./assets/js/neko.js"></script>
+  <script src="./assets/js/neko-init.js"></script>
+</body>
+</html>
