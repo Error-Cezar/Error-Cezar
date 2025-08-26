@@ -11,7 +11,21 @@ body {
 
 .player-container {
   position: absolute;
-  padding: 10px;
+  bottom: clamp(12%, 4vh, 12%); /* responsive vertical spacing */
+  left: 12%;
+  max-width: 450px;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+/* On narrow viewports, center within the parent and reduce bottom gap */
+@media (max-width: 600px) {
+  .player-container {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 10%;
+    max-width: none;
+  }
 }
 
 .player-container .song-info {
@@ -37,7 +51,7 @@ body {
 .player-container .song-info .progress-bar .fill-bar {
   width: 0;
   height: 6px;
-  background: #1db954;
+  background: #FF00EE;
   border-radius: 20px;
 }
 
@@ -60,7 +74,7 @@ body {
   height: 50px;
   position: absolute;
   background-image: url('../music/covers/default.png');
-  top: 105px;
+  top: 100px;
   left: 30px;
   background-repeat: no-repeat;
   background-position: bottom center;
@@ -84,7 +98,7 @@ body {
 }
 
 .player-container .controls #play {
-  background-color: #1db954;
+  background-color: #EA00FF;
   color: #fff;
   padding: 15px 17px 14px 18px;
   font-size: 18px;
@@ -93,7 +107,7 @@ body {
 }
 
 .player-container .controls #play:hover {
-  background: #189945;
+  background: #B308C2;
 }
 
 .player-container .controls i {

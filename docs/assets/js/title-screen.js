@@ -56,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if(APP_READY) return;
       terminalContainer.style.display = 'none';
       document.getElementById('myVideo').play();
+      document.getElementById('terminal-hide').setAttribute('meow', true)
       document.getElementById('blurred-box').style.display = 'block';
       document.getElementById('music-controls').style.display = 'flex';
       removeEventListeners();

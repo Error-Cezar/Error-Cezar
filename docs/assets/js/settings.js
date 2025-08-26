@@ -1,6 +1,5 @@
 const GLOBAL_SETTINGS = {
     UserID: "362991657236561923",
-    neko: false,
     music: true,
     AvatarFrame: false,
     Status: false,
@@ -35,7 +34,7 @@ const GLOBAL_SETTINGS = {
     {
         name: "DDU-DU DDU-DU",
         src: "D4.mp3",
-        cover: "BP.jpg"
+        cover: "SU.jpg"
     },
         {
         name: "Forever Young",
@@ -50,16 +49,17 @@ const GLOBAL_SETTINGS = {
     ],
 
     Titles: [
-        "Ball's Bio",
-        "Welcome to My World",
-        "Explore and Enjoy"
+        "ErrorCezar",
+        "errorcezar.lol",
+        ":3 cho cho cho"
     ],
     Title_Interval: 3000,
 
     usernameVariants: [
         "ErrorCezar",
         "The original code is a mess",
-        "08/02/2025 :3"
+        "What is <strong><span style='color: red;'>LOVE</span>.</strong>",
+        "08/02/2025 :3",
     ],
     usernameInterval: 3000
 };

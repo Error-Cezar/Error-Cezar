@@ -32,7 +32,7 @@
             .catch(error => {
                 console.error("Music playback error:", error);
                 setTimeout(() => {
-                    song.play().catch(e => console.error("Retry error:", e));
+                    song.play()
                 }, 1000);
             });
     }
@@ -97,10 +97,11 @@
     }
     }
 
-    function formatTime(seconds) {
-    const minutes = Math.floor(seconds / 60);
-    const secs = Math.floor(seconds % 60);
-    return `${minutes}:${secs < 10 ? "0" : ""}${secs}`;
+    function formatTime(totalSeconds) {
+        const d = dayjs.duration(Math.max(0, Math.floor(Number(totalSeconds)) || 0), 'seconds');
+        const minutes = String(Math.floor(d.asMinutes())).padStart(2, '0');
+        const seconds = String(d.seconds()).padStart(2, '0');
+        return `${minutes}:${seconds}`;
     }
 
     function togglePlayPause() {

@@ -1,9 +1,31 @@
 body {
+  user-select: none;          /* disable selection */
   margin: 0;
   padding: 0;
   font-family: 'Comic Neue', cursive;
   overflow: hidden;
   background-color: black;
+}
+
+#terminal-hide {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0); /* semi-transparent black tint */
+  z-index: 999;         /* topmost (safe high value) */
+  pointer-events: none;   /* allow clicks to pass through */
+}
+
+/* when data-meow is present, fade out */
+#terminal-hide[meow] {
+  opacity: 0;
+  transition: opacity 600ms ease;
+}
+
+/* when data-meow is present, fade out */
+#terminal-hide[focus] {
+  backdrop-filter: blur(10px) !important;
+  opacity: 0.5 !important;
+  transition: opacity 600ms ease !important;
 }
 
 #terminal {
@@ -148,8 +170,7 @@ body {
     transform 0.1s ease-out;
   will-change: box-shadow, transform;
   backdrop-filter: blur(5px);
-  z-index: 999;
-  display: none;
+  z-index: 998;
   padding: 20px;
   text-align: center;
   transform-style: preserve-3d;
@@ -169,14 +190,14 @@ body {
   transform: translateX(-50%);
   display: flex;
   justify-content: center;
-  z-index: 1001;
+  z-index: 997;
   width: 100%;
 }
 
 .links a {
   display: flex;
   align-items: center;
-  margin: 0 10px;
+  margin: 0 5px;
   color: #ffffff;
   text-decoration: none;
   transition: color 0.3s;
@@ -185,13 +206,12 @@ body {
 
 .links a:hover {
   color: rgb(214, 109, 255);
-  text-decoration: underline;
   transform: translateY(-5px) scale(1.1);
 }
 
 .links a i {
-  margin-right: 5px;
-  font-size: 24px;
+  margin-right: 1px;
+  font-size: 30px;
 }
 
 .user-description {
@@ -213,7 +233,7 @@ body {
   height: 25vmin;
   max-width: 160px;
   max-height: 160px;
-  z-index: 1001;
+  z-index: 996;
   pointer-events: none;
   display: none;
   border-radius: 0 !important;
@@ -239,7 +259,7 @@ body {
   top: 110px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 1001;
+  z-index: 995;
   padding: 5px 15px;
   text-align: center;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
@@ -258,7 +278,6 @@ body {
   background-color: rgba(0, 0, 0, 0.3);
   border-radius: 12px;
   padding: 12px;
-  margin: 2% auto 0;
   top: 48%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -268,7 +287,7 @@ body {
   color: #fff;
   font-family: 'Comic Neue', cursive;
   transition: all 0.3s ease;
-  z-index: 1001;
+  z-index: 994;
   margin: 0 !important;
 }
 
@@ -404,7 +423,7 @@ body {
   justify-content: center;
   gap: 8px;
   width: 90%;
-  z-index: 1001;
+  z-index: 993;
   flex-wrap: wrap;
 }
 
@@ -415,29 +434,6 @@ body {
   object-fit: contain;
   transition: transform 0.3s ease;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
-}
-
-.lang-container {
-  position: absolute;
-  bottom: 68px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  width: 90%;
-  z-index: 1001;
-  margin-top: 20px;
-  flex-wrap: wrap;
-}
-
-.lang-container img {
-  width: 50px !important;
-  height: 50px !important;
-  border-radius: 0 !important;
-  object-fit: contain;
-  transition: all 0.3s ease;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
 }
 
 #video-overlay {
