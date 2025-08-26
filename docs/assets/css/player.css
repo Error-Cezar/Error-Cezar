@@ -11,7 +11,7 @@ body {
 
 .player-container {
   position: absolute;
-  bottom: clamp(12%, 4vh, 12%); /* responsive vertical spacing */
+  bottom: clamp(15%, 4vh, 15%); /* responsive vertical spacing */
   left: 12%;
   max-width: 450px;
   padding: 8px;
@@ -19,11 +19,11 @@ body {
 }
 
 /* On narrow viewports, center within the parent and reduce bottom gap */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .player-container {
     left: 50%;
     transform: translateX(-50%);
-    bottom: 10%;
+    bottom: 15%;
     max-width: none;
   }
 }

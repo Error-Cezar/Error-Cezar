@@ -160,11 +160,10 @@ body {
   width: 80%;
   max-width: 500px;
   height: auto;
-  min-height: 670px;
+  min-height: 550px;
   background-color: rgba(0, 0, 0, 0.377);
   border-radius: 20px;
   border: 4px solid rgb(255, 255, 255);
-  display: block;
   transition: 
     box-shadow 0.1s linear,
     transform 0.1s ease-out;
@@ -185,7 +184,7 @@ body {
 
 .links {
   position: absolute;
-  bottom: 20px;
+  bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -416,7 +415,7 @@ body {
 
 .badges-container {
   position: absolute;
-  top: 28%;
+  top: 33%;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -463,7 +462,7 @@ body.video-normal #video-overlay {
 @media screen and (max-width: 768px) {
   #blurred-box {
     width: 90%;
-    min-height: 600px;
+    min-height: 500px;
   }
 
   #profile-picture {
@@ -509,11 +508,11 @@ body.video-normal #video-overlay {
   }
 
   .links {
-    bottom: 15px !important;
+    bottom: 35px !important;
   }
 
   .badges-container {
-    top: 27% !important;
+    top: 31% !important;
   }
   
   .badges-container img {
