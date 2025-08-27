@@ -7,6 +7,16 @@ const GLOBAL_SETTINGS = {
 
     Songs: [
     {
+        name: "Start A War",
+        src: "SAW.mp3",
+        cover: "SAW.jpg"
+    },
+    {
+        name: "FXCK UP THE WORLD",
+        src: "FUTW.mp3",
+        cover: "FUTW.jpg"
+    },
+    {
         name: "Like That",
         src: "LikeThat.mp3",
         cover: "LikeThat.jpg"
@@ -36,7 +46,7 @@ const GLOBAL_SETTINGS = {
         src: "D4.mp3",
         cover: "SU.jpg"
     },
-        {
+    {
         name: "Forever Young",
         src: "FY.mp3",
         cover: "SU.jpg"
@@ -45,6 +55,11 @@ const GLOBAL_SETTINGS = {
         name: "Shut Down",
         src: "SD.mp3",
         cover: "BP.jpg"
+    },
+    {
+        name: "With The IE",
+        src: "IE.mp3",
+        cover: "SAW.jpg"
     }
     ],
 

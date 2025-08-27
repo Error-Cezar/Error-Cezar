@@ -7,5 +7,5 @@ document.addEventListener("Music_Ready", () => {
         audio.volume = volume;
     });
 
-    slider.value = audio.volume * 100; // Khởi tạo giá trị ban đầu của slider
+    slider.value = audio.volume;
 })
