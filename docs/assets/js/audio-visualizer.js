@@ -4,7 +4,7 @@ document.addEventListener("Music_Ready", function () {
     return;
   }
 
-  if(CurOS == "iOS" || CurOS == "Android") {
+  if(IsMobile) {
     console.warn("Audio Visualizer disabled: Mobile device detected.");
     return;
   }
