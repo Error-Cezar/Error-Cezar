@@ -15,6 +15,10 @@ const GLOBAL_SETTINGS = {
       src: "JENNIE.ogg",
     },
     {
+      name: "JUMP",
+      src: "JUMP.ogg",
+    },
+    {
       name: "FXCK UP THE WORLD",
       src: "FUTW.ogg",
     },
