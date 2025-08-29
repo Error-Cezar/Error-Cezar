@@ -305,7 +305,7 @@
     };
 
     window.onblur = function () {
-      if (!APP_READY) return;
+      if (!APP_READY || IsMobile) return;
       meow.setAttribute("focus", true);
     };
 
