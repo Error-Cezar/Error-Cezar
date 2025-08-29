@@ -1,80 +1,69 @@
 const GLOBAL_SETTINGS = {
-    UserID: "362991657236561923",
-    music: true,
-    AvatarFrame: false,
-    Status: false,
-    Tilt: false,
+  UserID: "362991657236561923",
+  music: true,
+  AvatarFrame: false,
+  Status: false,
+  Tilt: false,
 
-    Songs: [
+  Songs: [
     {
-        name: "Start A War",
-        src: "SAW.mp3",
-        cover: "SAW.jpg"
+      name: "Start A War",
+      src: "SAW.ogg",
     },
     {
-        name: "FXCK UP THE WORLD",
-        src: "FUTW.mp3",
-        cover: "FUTW.jpg"
+      name: "Like JENNIE",
+      src: "JENNIE.ogg",
     },
     {
-        name: "Like That",
-        src: "LikeThat.mp3",
-        cover: "LikeThat.jpg"
+      name: "FXCK UP THE WORLD",
+      src: "FUTW.ogg",
     },
     {
-        name: "Rather Lie",
-        src: "RatherLie.mp3",
-        cover: "RatherLie.jpg"
+      name: "Like That",
+      src: "LikeThat.ogg",
     },
     {
-        name: "ExtraL",
-        src: "ExtraL.mp3",
-        cover: "ExtraL.jpg"
+      name: "Rather Lie",
+      src: "RatherLie.ogg",
     },
     {
-        name: "Runnin",
-        src: "Runnin.mp3",
-        cover: "Runnin.jpg"
-    },
-        {
-        name: "PUFF",
-        src: "PUFF.mp3",
-        cover: "PUFF.jpg"
+      name: "ExtraL",
+      src: "ExtraL.ogg",
     },
     {
-        name: "DDU-DU DDU-DU",
-        src: "D4.mp3",
-        cover: "SU.jpg"
+      name: "Runnin",
+      src: "Runnin.ogg",
     },
     {
-        name: "Forever Young",
-        src: "FY.mp3",
-        cover: "SU.jpg"
+      name: "PUFF",
+      src: "PUFF.ogg",
     },
     {
-        name: "Shut Down",
-        src: "SD.mp3",
-        cover: "BP.jpg"
+      name: "DDU-DU DDU-DU",
+      src: "D4.ogg",
     },
     {
-        name: "With The IE",
-        src: "IE.mp3",
-        cover: "SAW.jpg"
+      name: "Forever Young",
+      src: "FY.ogg",
+    },
+    {
+      name: "Shut Down",
+      src: "SD.ogg",
+    },
+    {
+      name: "With The IE",
+      src: "IE.ogg",
     }
-    ],
+  ],
 
-    Titles: [
-        "ErrorCezar",
-        "errorcezar.lol",
-        ":3 cho cho cho"
-    ],
-    Title_Interval: 3000,
+  Titles: ["ErrorCezar", "errorcezar.lol", ":3 cho cho cho"],
+  Title_Interval: 3000,
 
-    usernameVariants: [
-        "ErrorCezar",
-        "The original code is a mess",
-        "What is <strong><span style='color: red;'>LOVE</span>.</strong>",
-        "08/02/2025 :3",
-    ],
-    usernameInterval: 3000
+  usernameVariants: [
+    "ErrorCezar",
+    "The original code is a mess",
+    "What is <strong><span style='color: red;'>LOVE</span>.</strong>",
+    "08/02/2025 :3",
+  ],
+  usernameInterval: 3000,
 };

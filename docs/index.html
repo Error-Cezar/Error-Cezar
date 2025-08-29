@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>-WELCOME-</title>
+    <title>...</title>
 
     <meta property="og:title" content="errorcezar.lol" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://errorcezar.lol" />
-    <meta property="og:description" content="A place that may or may not be owned by some idiot called 'ErrorCezar'" />
-    <meta name="theme-color" content="#6d09e8">
+    <meta
+      property="og:description"
+      content="A place that may or may not be owned by some idiot called 'ErrorCezar'"
+    />
+    <meta name="theme-color" content="#6d09e8" />
+
+    <link rel="icon" type="image/x-icon" href="./assets/favico/default.ico" />
 
     <link
       href="https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap"
@@ -20,16 +25,22 @@
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
 
-    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/css/main.css" />
     <link rel="stylesheet" href="./assets/css/player.css" />
     <link rel="stylesheet" href="./assets/css/tooltip.css" />
     <link rel="stylesheet" href="./assets/css/slider.css" />
+    <link rel="stylesheet" href="./assets/css/float.css" />
 
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
     />
-    <link rel="icon" type="image/x-icon" href="./assets/favico/default.ico" />
+
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -38,12 +49,9 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
       rel="stylesheet"
     />
-    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.2/dist/vanilla-tilt.min.js"></script>
-
-    <link rel="stylesheet" href="./assets/css/tilt-effect.css" />
   </head>
-  <body>
-    <div class="slider-container">
+  <body class="bg-dark">
+    <div class="slider-container" style="z-index: 2">
       <input
         type="range"
         class="slider"
@@ -55,20 +63,18 @@
       />
     </div>
 
-    <div id="terminal">
-      <div id="terminal-header">
-        <div id="terminal-buttons">
-          <div class="terminal-button" id="close-button"></div>
-          <div class="terminal-button" id="minimize-button"></div>
-          <div class="terminal-button" id="maximize-button"></div>
-        </div>
+    <div class="container" style="z-index: 10000">
+      <div class="row justify-content-center">
+        <p class="text-white" id="terminal-text" style="font-size: 50px"></p>
       </div>
-      <div id="terminal-content">
-        <p id="terminal-text"></p>
-      </div>
+      <!-- /END THE DIV -->
     </div>
 
     <div id="terminal-hide" aria-hidden="true"></div>
+
+    <div class="container-fluid p-0" id="canvasContainer">
+      <canvas id="myCanvas"></canvas>
+    </div>
 
     <div id="video-background">
       <video autoplay muted loop id="myVideo">
@@ -78,7 +84,14 @@
 
       <div id="audio-background">
         <div id="music-controls">
-          <input type="range" id="volume-slider" min="0" max="1" value=".3" step=".001" />
+          <input
+            type="range"
+            id="volume-slider"
+            min="0"
+            max="1"
+            value=".3"
+            step=".001"
+          />
           <div id="progress-container">
             <div id="progress-bar"></div>
           </div>
@@ -86,27 +99,30 @@
       </div>
     </div>
     <div id="video-overlay"></div>
-    <div id="blurred-box" class="tilt-element">
-      <img id="profile-picture" src="./assets/pfp/default.webp" alt="Icon" />
-      <img id="avatar-frame" src="" alt="Avatar Frame" />
-      <p
-        id="username-container"
-        style="color: white; font-weight: bold; font-size: 32px"
-      ></p>
-      <div class="badges-container">
+    <div
+      id="blurred-box"
+      class="tilt-element d-flex align-items-start flex-column floating"
+    >
+      <div class="align-self-center">
+        <img
+          id="profile-picture"
+          class="mx-auto d-block border border-white"
+          src="./assets/pfp/default.webp"
+          alt="Icon"
+        />
+        <p
+          id="username-container"
+          style="color: white; font-weight: bold; font-size: 32px"
+        ></p>
+      </div>
+
+      <div class="badges-container align-self-center">
         <img src="./assets/badge/love.png" alt="heart badge" />
       </div>
 
-      <div class="player-container">
-        <div class="song-info">
+      <div class="player-container align-self-center">
+        <div class="song-info rounded-top">
           <div class="song-name">N/A</div>
-          <div class="progress-bar">
-            <div class="fill-bar"></div>
-          </div>
-          <div class="time">0:00 - 0:00</div>
-        </div>
-        <div class="disk">
-          <div id="cover" class="cover"></div>
         </div>
         <div class="controls">
           <i id="prev" class="prev-btn fa-solid fa-backward"></i>
@@ -115,11 +131,12 @@
         </div>
       </div>
 
-      <div class="links">
+      <div class="links align-self-center">
         <a
           onclick="CopyClipboard('errorcezar', this)"
           data-tooltip="Copy Discord username"
           target="_blank"
+          class="color-white"
         >
           <i class="fab fa-discord"></i>
         </a>
@@ -128,6 +145,7 @@
           onclick="CopyClipboard('error.802', this)"
           data-tooltip="Copy Signal username"
           target="_blank"
+          class="color-white"
         >
           <i class="fa-brands fa-signal-messenger"></i>
         </a>
@@ -136,6 +154,7 @@
           href="https://steamcommunity.com/profiles/76561199191273742/"
           data-tooltip="Open Steam Profile"
           target="_blank"
+          class="color-white"
         >
           <i class="fa-brands fa-steam"></i>
         </a>
@@ -144,6 +163,7 @@
           href="https://github.com/Error-Cezar"
           data-tooltip="Open GitHub"
           target="_blank"
+          class="color-white"
         >
           <i class="fa-brands fa-github"></i>
         </a>
@@ -152,6 +172,7 @@
           href="https://x.com/errorisntpublic"
           data-tooltip="Open Twitter"
           target="_blank"
+          class="color-white"
         >
           <i class="fa-brands fa-twitter"></i>
         </a>
@@ -160,6 +181,7 @@
           onclick="CopyClipboard('bc1q329swh9rlpnn5pw97k4crjhsm6nhjlzgl4u7hl', this)"
           data-tooltip="Copy BTC Wallet"
           target="_blank"
+          class="color-white"
         >
           <i class="fa-brands fa-bitcoin"></i>
         </a>
@@ -182,9 +204,9 @@
         !el.hasAttribute("data-og")
       ) {
         el.setAttribute("data-og", el.getAttribute("data-tooltip"));
-        el.setAttribute("data-tooltip", "Copied !"); // add or set value
+        el.setAttribute("data-tooltip", "Copied !");
         await wait(500);
-        el.setAttribute("data-tooltip", el.getAttribute("data-og")); // add or set value
+        el.setAttribute("data-tooltip", el.getAttribute("data-og"));
         el.removeAttribute("data-og");
       }
     }
@@ -195,28 +217,44 @@
   <script src="./assets/js/modules/day.js"></script>
   <script src="./assets/js/modules/duration.js"></script>
 
+  <script src="https://cdn.jsdelivr.net/gh/foobar404/wave.js/dist/bundle.js"></script>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+    integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
+    crossorigin="anonymous"
+  ></script>
+
   <script>
     dayjs.extend(window.dayjs_plugin_duration);
   </script>
 
   <script src="./assets/js/volume.js"></script>
   <script src="./assets/js/settings.js"></script>
+
+  <script src="./assets/js/modules/oneko.js"></script>
+  <script src="./assets/js/cat.js"></script>
+
   <script src="./assets/js/title-screen.js"></script>
 
   <script src="./assets/js/audio-visualizer.js"></script>
   <script src="./assets/js/music-player.js"></script>
 
-  <script src="./assets/js/activity-track.js"></script>
-  <script src="./assets/js/avatar-frame.js"></script>
-
   <script src="./assets/js/title.js"></script>
   <script src="./assets/js/username-animation.js"></script>
-
-  <script src="./assets/js/tilt-effect.js"></script>
-  <script src="./assets/js/audio-visualizer.js"></script>
-
   <script>
     let meow = document.getElementById("terminal-hide");
+    let box = document.getElementById("blurred-box");
 
     window.onfocus = function () {
       if (!APP_READY) return;

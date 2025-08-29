@@ -1,74 +1,54 @@
-document.addEventListener('Music_Ready', function() {
-  const audioElement = window.MusicPlayer ? window.MusicPlayer.getAudio() : null; 
-  const blurredBox = document.getElementById('blurred-box');
+document.addEventListener("Music_Ready", function () {
+  const canvas = document.getElementById("myCanvas");
 
-  if (!audioElement) {
-    console.error('Audio element not found');
-    return;
-  }
-  
-  if (!window.AudioContext && !window.webkitAudioContext) {
-    console.log('Web Audio API is not supported in this browser');
-    return;
-  }
+  let wave = new Wave(window.MusicPlayer.getAudio(), canvas);
 
-  const AudioContext = window.AudioContext || window.webkitAudioContext;
-  const audioContext = new AudioContext();
-  
-  const analyser = audioContext.createAnalyser();
-  analyser.fftSize = 2048;
-  analyser.smoothingTimeConstant = 0.6;
+  wave.addAnimation(
+    new wave.animations.Lines({
+      frequencyBand: "base",
+      count: 30,
+      lineColor: "blue",
+    })
+  );
 
-  const source = audioContext.createMediaElementSource(audioElement);
-  source.connect(analyser);
-  analyser.connect(audioContext.destination);
+  wave.addAnimation(
+    new wave.animations.Lines({
+      frequencyBand: "lows",
+      count: 30,
+      lineColor: "purple",
+    })
+  );
 
-  const bufferLength = analyser.frequencyBinCount;
-  const dataArray = new Uint8Array(bufferLength);
+  wave.addAnimation(
+    new wave.animations.Lines({
+      lineColor: "black",
+      lineWidth: 10,
+      fillColor: { gradient: ["#000000"] },
+      count: 60,
+      mirroredX: true,
+      rounded: true,
+      frequencyBand: "mids",
+    })
+  );
 
-  let bassIntensity = 0;
-  let prevBassIntensity = 0;
-  const bassDecay = 0.85;
+  wave.addAnimation(
+    new wave.animations.Lines({
+      lineColor: "pink",
+      lineWidth: 10,
+      count: 60,
+      fillColor: { gradient: ["#FF00D4"] },
+      mirroredX: true,
+      rounded: true,
+      frequencyBand: "highs",
+    })
+  );
 
-  function updateVisuals() {
-    requestAnimationFrame(updateVisuals);
-    analyser.getByteFrequencyData(dataArray);
-    
-    const bassRangeStart = 0;
-    const bassRangeEnd = Math.floor(bufferLength * 0.1);
-    
-    let bassSum = 0;
-    for (let i = bassRangeStart; i < bassRangeEnd; i++) {
-      const weight = 1.0 - (i / bassRangeEnd);
-      bassSum += dataArray[i] * weight;
-    }
-    
-    const rawBassIntensity = bassSum / (bassRangeEnd * 128);
-    bassIntensity = Math.max(rawBassIntensity, prevBassIntensity * bassDecay);
-    prevBassIntensity = bassIntensity;
-    
-    const shadowBlur = 10 + bassIntensity * 30;
-    const shadowSpread = bassIntensity * 10;
-    const shadowColor = `rgba(247, 2, 235, ${0.7 + bassIntensity * 0.8})`;
-    blurredBox.style.boxShadow = `0 0 ${shadowBlur}px ${shadowSpread}px ${shadowColor}`;
-    if (bassIntensity > 0.3) {
-      blurredBox.classList.add('active-border');
-      const borderElement = blurredBox.querySelector('.animated-border') || document.createElement('div');
-      borderElement.className = 'animated-border';
-      borderElement.style.opacity = bassIntensity;
-      borderElement.style.transform = `scale(${1 + bassIntensity * 0.2})`;
-      
-      if (!blurredBox.contains(borderElement)) {
-        blurredBox.appendChild(borderElement);
-      }
-    } else {
-      blurredBox.classList.remove('active-border');
-    }
+  // manually resize the canvas when the window is resized
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
   }
 
-  audioElement.addEventListener('play', function() {
-    audioContext.resume().then(() => {
-      updateVisuals();
-    });
-  });
+  window.addEventListener("resize", resizeCanvas, false);
+  resizeCanvas(); // Initial canvas size adjustment
 });
