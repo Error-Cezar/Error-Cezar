@@ -50,6 +50,46 @@
       rel="stylesheet"
     />
   </head>
+
+  <script src="./assets/js/settings.js"></script>
+  <script>
+    console.log("Settings loaded");
+    const hasHWA = (() => {
+      // create a test function for both "default" drawing and forced software
+      const test = (force = false) => {
+        // Firefox (at lest on macOS) doesn't accelerate OffscreenCanvas
+        const canvas = document.createElement("canvas");
+        // willReadFrequently will force software rendering
+        const ctx = canvas.getContext("2d", { willReadFrequently: force });
+        ctx.moveTo(0, 0);
+        ctx.lineTo(120, 121); // HWA is bad at obliques
+        ctx.stroke();
+        return ctx.getImageData(0, 0, 200, 200).data.join();
+      };
+      // check that both return different results
+      return test(true) !== test(false);
+    })();
+
+    console.log(`Hardware Acceleration: ${hasHWA ? "Enabled" : "Disabled"}`);
+
+    let userAgent = navigator.userAgent;
+    let CurOS = "Things";
+
+    if (userAgent.indexOf("Win") !== -1) {
+      CurOS = "Windows";
+    } else if (userAgent.indexOf("Mac") !== -1) {
+      CurOS = "MacOS";
+    } else if (userAgent.indexOf("Linux") !== -1) {
+      CurOS = "Linux";
+    } else if (/Android/.test(userAgent)) {
+      CurOS = "Android";
+    } else if (/iPhone|iPad|iPod/.test(userAgent)) {
+      CurOS = "iOS";
+    }
+
+    console.log(`Detected OS: ${CurOS}`);
+  </script>
+
   <body class="bg-dark">
     <div class="slider-container" style="z-index: 2">
       <input
@@ -240,7 +280,6 @@
   </script>
 
   <script src="./assets/js/volume.js"></script>
-  <script src="./assets/js/settings.js"></script>
 
   <script src="./assets/js/modules/oneko.js"></script>
   <script src="./assets/js/cat.js"></script>

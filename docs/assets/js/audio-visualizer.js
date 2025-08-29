@@ -1,4 +1,14 @@
 document.addEventListener("Music_Ready", function () {
+  if(!hasHWA) {
+    console.warn("Audio Visualizer disabled: Hardware Acceleration is off.");
+    return;
+  }
+
+  if(CurOS == "iOS" || CurOS == "Android") {
+    console.warn("Audio Visualizer disabled: Mobile device detected.");
+    return;
+  }
+
   const canvas = document.getElementById("myCanvas");
 
   let wave = new Wave(window.MusicPlayer.getAudio(), canvas);

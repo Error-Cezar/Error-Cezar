@@ -6,8 +6,8 @@ document.addEventListener("DOMContentLoaded", function () {
   videoOverlay.id = "video-overlay";
   document.getElementById("video-background").appendChild(videoOverlay);
 
-  var terminalText = document.getElementById("terminal-text");
-  var videoBackground = document.getElementById("myVideo");
+  let terminalText = document.getElementById("terminal-text");
+  let videoBackground = document.getElementById("myVideo");
 
   videoBackground.pause();
 
@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
     removeEventListeners();
     document.body.classList.add("video-normal");
 
+    console.log("Welcome stalker :)");
     APP_READY = true;
     document.dispatchEvent(READY_CONNECT);
   }
@@ -43,32 +44,13 @@ document.addEventListener("DOMContentLoaded", function () {
     handleInput();
   });
 
-  function getOS() {
-    let userAgent = navigator.userAgent;
-    let os = "Things";
-
-    if (userAgent.indexOf("Win") !== -1) {
-      os = "Windows";
-    } else if (userAgent.indexOf("Mac") !== -1) {
-      os = "MacOS";
-    } else if (userAgent.indexOf("Linux") !== -1) {
-      os = "Linux";
-    } else if (/Android/.test(userAgent)) {
-      os = "Android";
-    } else if (/iPhone|iPad|iPod/.test(userAgent)) {
-      os = "iOS";
-    }
-
-    return os;
-  }
-
   document.body.classList.remove("video-normal");
   videoOverlay.style.display = "block";
 
   addEventListeners();
 
   new Typewriter("#terminal-text", {
-    strings: ["Click me", `Awesome ${getOS()}`],
+    strings: ["Click me", `Awesome ${CurOS}`],
     autoStart: true,
     loop: true,
   });
