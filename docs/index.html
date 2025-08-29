@@ -52,6 +52,8 @@
   </head>
 
   <script src="./assets/js/settings.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cw@latest/dist/cw.min.js"></script>
+
   <script>
     console.log("Settings loaded");
     const hasHWA = (() => {
@@ -142,6 +144,7 @@
       </div>
     </div>
     <div id="video-overlay"></div>
+    
     <div
       id="blurred-box"
       class="tilt-element d-flex align-items-start flex-column floating"
@@ -263,11 +266,6 @@
   <script src="https://cdn.jsdelivr.net/gh/foobar404/wave.js/dist/bundle.js"></script>
 
   <script
-    src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"
-  ></script>
-  <script
     src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
     integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
     crossorigin="anonymous"
@@ -307,6 +305,7 @@
     window.onblur = function () {
       if (!APP_READY || IsMobile) return;
       meow.setAttribute("focus", true);
+      ran()
     };
 
     if (IsMobile) {

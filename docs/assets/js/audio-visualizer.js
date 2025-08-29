@@ -60,5 +60,5 @@ document.addEventListener("Music_Ready", function () {
   }
 
   window.addEventListener("resize", resizeCanvas, false);
-  resizeCanvas(); // Initial canvas size adjustment
+  resizeCanvas();
 });
