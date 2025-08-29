@@ -87,7 +87,7 @@
       CurOS = "iOS";
     }
 
-    let regexp = /android|iphone|kindle|ipad/i.test(userAgent);
+    let IsMobile = /android|iphone|kindle|ipad/i.test(userAgent);
 
     console.log(`Detected OS: ${CurOS}`);
     console.log(`Is Mobile?: ${IsMobile && "Yes" || "No"}`);
