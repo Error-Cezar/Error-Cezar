@@ -17,7 +17,7 @@
   let currentSongIndex = 0;
   const song = new Audio();
   let playing = false;
-  song.volume = 0.3;
+  song.volume = 0.5;
 
   function initMusicPlayer() {
     loadSong(currentSongIndex);
