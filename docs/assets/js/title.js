@@ -5,6 +5,6 @@ function bleh() {
 }
 
 bleh();
-if (GLOBAL_SETTINGS.Titles.length > 1) {
+if (GLOBAL_SETTINGS.Titles.length > 1 && !IsMobile) {
   setInterval(bleh, GLOBAL_SETTINGS.Title_Interval);
 }

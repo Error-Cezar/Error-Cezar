@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function handleInput() {
     if (APP_READY) return;
-    terminalText.style.display = "none";
+    terminalText.remove();
     document.getElementById("myVideo").play();
     document.getElementById("terminal-hide").setAttribute("meow", true);
     document.getElementById("blurred-box").style.display = "block";

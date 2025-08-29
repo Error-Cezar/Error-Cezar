@@ -121,7 +121,7 @@
 
     <div id="video-background">
       <video autoplay muted loop id="myVideo">
-        <source src="./assets/back/car.mp4" type="video/mp4" />
+        <source src="./assets/back/desktop/car.mp4" type="video/mp4" />
         Switch your browser bro how the FUCK do you not support MP4 VIDEOS
       </video>
 
@@ -295,11 +295,12 @@
   <script src="./assets/js/title.js"></script>
   <script src="./assets/js/username-animation.js"></script>
   <script>
+    let video = document.getElementById("myVideo");
     let meow = document.getElementById("terminal-hide");
     let box = document.getElementById("blurred-box");
 
     window.onfocus = function () {
-      if (!APP_READY) return;
+      if (!APP_READY || IsMobile) return;
       meow.removeAttribute("focus");
     };
 
@@ -307,5 +308,9 @@
       if (!APP_READY) return;
       meow.setAttribute("focus", true);
     };
+
+    if (IsMobile) {
+      video.setAttribute("src", "./assets/back/mobile/car.mp4");
+    }
   </script>
 </html>
