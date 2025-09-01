@@ -60,14 +60,17 @@ const GLOBAL_SETTINGS = {
     }
   ],
 
-  Titles: ["ErrorCezar", "errorcezar.lol", ":3 cho cho cho"],
+  Titles: ["ErrorCezar", "errorcezar.lol", "baby im a rockstar", ":3 cho cho cho", "my world"],
   Title_Interval: 3000,
 
   usernameVariants: [
     "ErrorCezar",
-    "The original code is a mess",
+    "341 o7",
+    "errorcezar.lol",
     "What is <strong><span style='color: red;'>LOVE</span>.</strong>",
-    "08/02/2025 :3",
+    "But have you ever met 🗣️🔥",
+    "🐈",
+    "<strong><span style='color: red;'>trust me..</span></strong>"
   ],
   usernameInterval: 3000,
 };
