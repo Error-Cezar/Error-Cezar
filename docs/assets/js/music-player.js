@@ -68,7 +68,7 @@
     const { name, src } = GLOBAL_SETTINGS.Songs[index];
     musicName.innerText = name;
 
-    song.src = "./assets/music/songs/" + src;
+    song.src = "./assets/music/" + src;
   }
 
   function togglePlayPause() {
