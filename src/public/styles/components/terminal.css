@@ -1,0 +1,28 @@
+#terminal-hide {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0); 
+  z-index: 10;
+  pointer-events: none; 
+}
+
+/* this hide */
+#terminal-hide[meow] {
+  opacity: 0;
+  transition: opacity 600ms ease;
+}
+
+/* this show */
+#terminal-hide[focus] {
+  backdrop-filter: blur(10px) !important;
+  opacity: 0.5 !important;
+  transition: opacity 600ms ease !important;
+}
+
+#terminal-text {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  white-space: pre-line;
+}

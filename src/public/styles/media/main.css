@@ -1,0 +1,45 @@
+@media screen and (max-width: 768px) {
+  #blurred-box {
+    width: 90%;
+    min-height: 500px;
+  }
+
+  #username-container {
+    font-size: 26px !important;
+  }
+
+  .links {
+    bottom: 35px !important;
+  }
+
+  .badges-container {
+    top: 39% !important;
+  }
+}
+
+
+@media screen and (max-width: 480px) {
+  #blurred-box {
+    min-height: 500px;
+    padding: 10px;
+  }
+
+  #terminal-text {
+    font-size: 30px !important;
+  }
+
+  .links a i {
+    font-size: 25px !important;
+  }
+}
+
+
+@media screen and (max-width: 480px) {
+  .player-container {
+    width: 330px !important;
+  }
+
+  .player-container .song-info .song-name {
+    font-size: 18px !important;
+  }
+}
