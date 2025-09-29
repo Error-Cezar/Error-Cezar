@@ -1,0 +1,13 @@
+export const terminal = () => {
+    return (
+        <div>
+                        <div class="container" style="z-index: 10000">
+                <div class="row justify-content-center">
+                    <p class="text-white" id="terminal-text" style="font-size: 50px"></p>
+                </div>
+            </div>
+
+            <div id="terminal-hide" aria-hidden="true"></div>
+        </div>
+    )
+}

@@ -37,7 +37,7 @@
   transition: opacity 0.5s ease, backdrop-filter 0.5s ease;
 }
 
-body.video-normal #video-overlay {
+.video-normal #video-overlay {
   opacity: 0;
   backdrop-filter: blur(0);
   pointer-events: none;
