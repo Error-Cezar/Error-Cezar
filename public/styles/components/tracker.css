@@ -1,0 +1,19 @@
+.track-container {
+  position: absolute;
+  bottom: clamp(40%, 4vh, 40%);
+  width: 400px;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.track-container .content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  background-color: #292929;
+  height: 65px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}

@@ -1,11 +1,11 @@
 
 import { body_el } from '../components/home/body/body';
-import { MainLayout } from '../components/main_layout';
+import { HomeLayout } from '../components/home_layout';
 
 export const Top = () => {
   return (
-    <MainLayout title={'meow'}>
+    <HomeLayout title={'meow'}>
         {body_el()}
-    </MainLayout>
+    </HomeLayout>
   )
 }

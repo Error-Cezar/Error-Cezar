@@ -1,6 +1,6 @@
 export const links = () => {
     return (
-        <links>
+        <>
             <div class="links align-self-center">
                 <a
                     onclick="CopyClipboard('errorcezar', this)"
@@ -67,6 +67,6 @@ export const links = () => {
                     <i class="fa-brands fa-lastfm"></i>
                 </a>
             </div>
-        </links>
+        </>
     )
 }

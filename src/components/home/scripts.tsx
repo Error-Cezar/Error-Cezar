@@ -33,5 +33,7 @@ export const scripts = () => {
         <script src="/js/username-animation.js"></script>
 
         <script src="/js/main/video.js"></script>
+
+        <script src="/js/main/websocket.js"></script>
     </scripts>)
 }

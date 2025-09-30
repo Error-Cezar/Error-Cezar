@@ -1,6 +1,7 @@
 import { badges } from "../box_elements/badges"
 import { links } from "../box_elements/links"
 import { player } from "../box_elements/player"
+import { fmtrack } from "../box_elements/lastfm"
 
 export const box = () => {
     return (
@@ -18,6 +19,7 @@ export const box = () => {
                 ></p>
             </div>
             {badges()}
+            {fmtrack()}
             {player()}
             {links()}
         </div>

@@ -6,7 +6,7 @@ import { hcss } from './home/css';
 
 import { scripts } from './home/scripts'
 
-export const MainLayout = (props: { title: string; children?: any }) => {
+export const HomeLayout = (props: { title: string; children?: any }) => {
   return html`<!DOCTYPE html>
     <html>
       <head>

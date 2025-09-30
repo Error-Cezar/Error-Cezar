@@ -1,8 +1,5 @@
 const GLOBAL_SETTINGS = {
-  UserID: "362991657236561923",
   music: true,
-  AvatarFrame: false,
-  Status: false,
   Tilt: false,
 
   Songs: [
@@ -60,17 +57,14 @@ const GLOBAL_SETTINGS = {
     }
   ],
 
-  Titles: ["ErrorCezar", "errorcezar.lol", "baby im a rockstar", ":3 cho cho cho", "my world"],
+  Titles: ["ErrorCezar", "errorcezar.lol", "baby im a rockstar", "Who else got em obssessed like JENNIE?"],
   Title_Interval: 3000,
 
   usernameVariants: [
     "ErrorCezar",
-    "341 o7",
     "errorcezar.lol",
-    "What is <strong><span style='color: red;'>LOVE</span>.</strong>",
     "But have you ever met 🗣️🔥",
-    "🐈",
-    "<strong><span style='color: red;'>trust me..</span></strong>"
+    "🐈"
   ],
   usernameInterval: 3000,
 };
