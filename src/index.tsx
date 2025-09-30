@@ -35,6 +35,9 @@ function broadcast() {
 
 // use fm api here
 const FM_JOB = new Cron('*/5 * * * * *', () => {
+  // check clients are connected
+  if(clients.length === 0) return;
+
   user.getRecentTracks({ user: FM_USER, limit: 2 }).then((value) => {
     let last = value.recenttracks.track[0]
     //console.log(last)
