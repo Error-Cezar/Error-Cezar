@@ -34,7 +34,7 @@ function broadcast() {
 }
 
 // use fm api here
-const FM_JOB = new Cron('*/5 * * * * *', () => {
+const FM_JOB = new Cron('*/3 * * * * *', () => {
   // check clients are connected
   if(clients.length === 0) return;
 
