@@ -8,7 +8,7 @@ const wsProtocol = currentLocation.protocol === 'https:' ? 'wss://' : 'ws://';
 const wsUrl = `${wsProtocol}${currentLocation.host}/fm`; // Adjust the path as needed
 
 // Create a new WebSocket connection
-const socket = new WebSocket(wsUrl);
+let socket;
 
 let trackname = document.getElementById("track-name");
 let trackartist = document.getElementById("track-artist");
@@ -16,38 +16,47 @@ let trackimage = document.getElementById("track-image");
 let trackpause = document.getElementById("track-pause");
 let trackplay = document.getElementById("track-play");
 
-// Event listener for when the connection is opened
-socket.onopen = function(event) {
-    console.log('WebSocket connected.');
-};
+function createSocket() {
+    console.log('Attempting to connect to WebSocket...');
+    socket = new WebSocket(wsUrl);
 
-// Event listener for when a message is received from the server
-socket.onmessage = function(event) {
-    console.log('WebSocket message received:', event.data);
-    const data = JSON.parse(event.data);
-    if(!data.artist) {
-        trackname.onclick = null;
-        trackname.innerHTML = "N/A";
-        trackartist.innerHTML = "N/A";
-        trackimage.setAttribute("src", "https://placecats.com/300/200");
-        trackpause.style.display = "none";
-        trackplay.style.display = "block";
-        return;
-    }
+    // Event listener for when the connection is opened
+    socket.onopen = function (event) {
+        console.log('WebSocket connected.');
 
-    trackname.innerHTML = data.track;
-    trackartist.innerHTML = data.artist;
-    trackimage.setAttribute("src", data.image || "https://placecats.com/300/200");
-    trackpause.style.display = "block";
-    trackplay.style.display = "none";
+        // Event listener for when a message is received from the server
+        socket.onmessage = function (event) {
+            console.log('WebSocket message received:', event.data);
+            const data = JSON.parse(event.data);
+            if (!data.artist) {
+                trackname.onclick = null;
+                trackname.innerHTML = "N/A";
+                trackartist.innerHTML = "N/A";
+                trackimage.setAttribute("src", "https://placecats.com/300/200");
+                trackpause.style.display = "none";
+                trackplay.style.display = "block";
+                return;
+            }
 
-    trackname.onclick = function() {
-        // Open the URL in a new tab
-        window.open(data.url, '_blank');
-  };
-};
+            trackname.innerHTML = data.track;
+            trackartist.innerHTML = data.artist;
+            trackimage.setAttribute("src", data.image || "https://placecats.com/300/200");
+            trackpause.style.display = data.playing ? "block" : "none";
+            trackplay.style.display = data.playing ? "none" : "block";
 
-// Event listener for errors
-socket.onerror = function(error) {
-    console.error('WebSocket error:', error);
-};
+            trackname.onclick = function () {
+                // Open the URL in a new tab
+                window.open(data.url, '_blank');
+            };
+        };
+
+        // Event listener for errors
+        socket.onerror = function (error) {
+            console.error('WebSocket error:', error);
+            socket.close();
+            setTimeout(createSocket, 5000); // Try to reconnect after 5 seconds
+        };
+    };
+}
+
+createSocket();
