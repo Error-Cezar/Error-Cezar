@@ -1,15 +1,7 @@
-# NEW_site
+*GitHub have a lot of cool README stats you can find some [here](https://github.com/anuraghazra/github-readme-stats) [https://github.com/anuraghazra/github-readme-stats]*
 
-To install dependencies:
+[![mystats](https://github-readme-stats.vercel.app/api?username=Error-Cezar&theme=algolia&hide=stars,issues)][mystats]
+[![langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Error-Cezar&layout=compact&theme=algolia&langs_count=4)][langs]
 
-```bash
-bun install
-```
-
-To run:
-
-```bash
-bun run src/index.ts
-```
-
-This project was created using `bun init` in bun v1.2.11. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+[mystats]: https://github.com/Error-Cezar
+[langs]: https://github.com/anuraghazra/github-readme-stats
