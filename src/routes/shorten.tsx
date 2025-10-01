@@ -4,6 +4,8 @@ import { validateRequest } from "../validators/shorten";
 import { validator } from "hono/validator";
 import { bearerAuth } from "hono/bearer-auth";
 
+import { Shorten } from "../pages/shorten";
+
 export function checkIfValueExists(value: string) {
     return pg`SELECT COUNT(*) FROM shorten WHERE ID = ${value}`.then(result => {
         return result[0].count > 0;
@@ -81,7 +83,7 @@ short_app.get('/', (c) => {
 })
 
 short_app.get('/new', (c) => {
-    return c.json({meow: true})
+    return c.html(<Shorten />)
 })
 
 
