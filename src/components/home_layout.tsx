@@ -8,7 +8,7 @@ import { scripts } from './home/scripts'
 
 export const HomeLayout = (props: { title: string; children?: any }) => {
   return html`<!DOCTYPE html>
-    <html>
+    <html lang="en">
       <head>
         ${meta()}
         ${hcss()}
