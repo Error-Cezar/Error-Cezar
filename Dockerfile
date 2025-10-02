@@ -1,8 +1,9 @@
 # Use the official Bun image
+FROM debian:bookworm
 FROM oven/bun:latest
 
-RUN apk update && \
-    apk add --no-cache ffmpeg
+RUN apt update && \
+    apt add --no-cache ffmpeg
 
 # Set the working directory
 WORKDIR /app
