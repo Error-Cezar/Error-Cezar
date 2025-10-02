@@ -1,5 +1,4 @@
 # Use the official Bun image
-FROM debian:bookworm
 FROM oven/bun:latest
 
 RUN apt update && \
