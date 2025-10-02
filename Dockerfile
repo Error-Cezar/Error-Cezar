@@ -2,7 +2,7 @@
 FROM oven/bun:latest
 
 RUN apt update && \
-    apt add --no-cache ffmpeg
+    apt install ffmpeg
 
 # Set the working directory
 WORKDIR /app
