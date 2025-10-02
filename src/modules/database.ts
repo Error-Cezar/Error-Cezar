@@ -1,0 +1,77 @@
+import type { Context } from "hono";
+import { pg } from "..";
+
+export function checkIfValueExists(value: string) {
+    return pg`SELECT COUNT(*) FROM shorten WHERE ID = ${value}`.then(result => {
+        return result[0].count > 0;
+    });
+}
+
+export async function ensureShorten(pg: Bun.SQL) {
+  console.log("Ensuring 'shorten' table exists...");
+  const tableExists = await pg`
+    SELECT EXISTS (
+        SELECT 1 
+        FROM information_schema.tables 
+        WHERE table_schema = 'public' 
+        AND table_name = 'shorten'
+    ) AS exists;
+`;
+
+  // If the table does not exist, create it
+  if (!tableExists[0].exists) {
+    await pg`
+        CREATE TABLE shorten (
+            ID VARCHAR(20) PRIMARY KEY,
+            link TEXT NOT NULL,
+            timestamp TIMESTAMP NOT NULL
+        );
+    `;
+    console.log("Table 'shorten' created.");
+  } else {
+    console.log("Table 'shorten' already exists.");
+  }
+
+  console.log("Ensuring 'apikeys' table exists...");
+  const apiTableExists = await pg`
+    SELECT EXISTS (
+        SELECT 1 
+        FROM information_schema.tables 
+        WHERE table_schema = 'public' 
+        AND table_name = 'apikeys'
+    ) AS exists;
+`;
+
+  // If the table does not exist, create it
+  if (!apiTableExists[0].exists) {
+    await pg`
+        CREATE TABLE apikeys (
+            key VARCHAR(100) PRIMARY KEY
+        );
+    `;
+    console.log("Table 'apikeys' created.");
+  } else {
+    console.log("Table 'apikeys' already exists.");
+  }
+
+}
+
+export function generateRandomShorten(length: number) {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+    for (let i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * characters.length));
+    }   
+    return result;
+}
+
+export async function checkIfKeyExists(key: string) {
+    return pg`SELECT COUNT(*) FROM apikeys WHERE key = ${key}`.then(result => {
+        return result[0].count > 0;
+    });
+}
+
+export const MiddlewareHandler = async (token: string, c: Context) => {
+    const stat = await checkIfKeyExists(token);
+    return stat;
+};

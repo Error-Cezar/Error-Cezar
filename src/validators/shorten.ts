@@ -1,5 +1,5 @@
 import type { Context } from "hono";
-import { checkIfValueExists, generateRandomShorten } from "../routes/shorten";
+import { checkIfValueExists, generateRandomShorten } from "../modules/database";
 
 type requestType = {link?: string, shorten?: string};
 type requestReturn = string | requestType;
