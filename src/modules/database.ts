@@ -54,6 +54,29 @@ export async function ensureShorten(pg: Bun.SQL) {
     console.log("Table 'apikeys' already exists.");
   }
 
+  console.log("Ensuring 'visits' table exists...");
+  const visitsTableExists = await pg`
+    SELECT EXISTS (
+        SELECT 1 
+        FROM information_schema.tables 
+        WHERE table_schema = 'public' 
+        AND table_name = 'visits'
+    ) AS exists;
+`;
+
+  // If the table does not exist, create it
+  if (!visitsTableExists[0].exists) {
+    await pg`
+    CREATE TABLE visits (
+        id VARCHAR PRIMARY KEY,
+        last TIMESTAMP,
+        total INTEGER
+    );
+    `;
+    console.log("Table 'visits' created.");
+  } else {
+    console.log("Table 'visits' already exists.");
+  }
 }
 
 export function generateRandomShorten(length: number) {
