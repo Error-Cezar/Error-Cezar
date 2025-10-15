@@ -91,7 +91,19 @@ export function generateRandomShorten(length: number) {
 export async function checkIfKeyExists(key: string) {
     return pg`SELECT COUNT(*) FROM apikeys WHERE key = ${key}`.then(result => {
         return result[0].count > 0;
-    });
+    }).catch(() => false);
+}
+
+export async function checkIfIpExists(ip: string) {
+    return pg`SELECT COUNT(*) FROM visits WHERE id = ${ip}`.then(result => {
+        return result[0].count > 0;
+    }).catch(() => false);
+}
+
+export async function getTotalVisits() {
+    return pg`SELECT SUM(total) as total FROM visits`.then(result => {
+        return result[0].total as number || 0;
+    }).catch(() => 0);
 }
 
 export const MiddlewareHandler = async (token: string, c: Context) => {

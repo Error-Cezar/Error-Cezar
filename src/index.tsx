@@ -3,6 +3,9 @@ import { Hono } from 'hono'
 import { serveStatic, websocket } from 'hono/bun'
 import type { WSContext } from 'hono/ws';
 import { SQL } from "bun";
+
+import { readFileSync } from 'fs';
+import { join } from 'path';
 // -------
 import { LastFMUser } from 'lastfm-ts-api';
 // -------
@@ -16,8 +19,12 @@ let clients = new Map<string, WSContext<any>>(); // Use Map for socket reference
 
 export function debugLog(...args: any[]) {
   if (ENV == "development") {
-    console.log(`[${new Date().toISOString()}]`, ...args)
+    console.log(`[${new Date().toISOString()} - DEV]`, ...args)
   }
+}
+
+export function Log(...args: any[]) {
+  console.log(`[${new Date().toISOString()}]`, ...args)
 }
 
 const dbhost = process.env.DB_HOST
@@ -26,6 +33,16 @@ const dbpassword = process.env.DB_PASSWORD
 const dbname = process.env.DB_NAME
 
 export const pg = new SQL(`postgres://${dbuser}:${dbpassword}@${dbhost}/${dbname}`);
+
+process.on("exit", async (code) => {
+    Log(`Closing database connection due to process exit with code: ${code}`);
+    await pg.close();
+});
+
+process.on('SIGINT', () => {
+    Log('Received SIGINT. Exiting...');
+    process.exit(0); // Optionally exit with a status code
+});
 
 type FMData = {
   artist: string,
@@ -123,6 +140,10 @@ app.route("/", site_app)
 app.route("/", ws_app)
 app.route("/admin", admin_app)
 app.route("/convert", convert_app)
+
+app.get('/maxie', async (c) => {
+  return c.text("https://iamawesome.com/ is a silly site\nand apparently maxie is a pretty cat")
+});
 
 export default {
   port: 3000,
