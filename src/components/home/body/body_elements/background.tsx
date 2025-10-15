@@ -1,7 +1,7 @@
 export const background = () => {
     return (
         <>
-            <div class="slider-container" style="z-index: 2">
+            <div class="slider-container" style="z-index: 3">
                 <input
                     type="range"
                     class="slider"
