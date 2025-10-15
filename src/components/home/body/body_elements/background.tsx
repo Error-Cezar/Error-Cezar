@@ -1,6 +1,6 @@
 export const background = () => {
     return (
-        <div>
+        <>
             <div class="slider-container" style="z-index: 2">
                 <input
                     type="range"
@@ -13,11 +13,11 @@ export const background = () => {
                 />
             </div>
 
-            <div class="container-fluid p-0" id="canvasContainer">
+            <div class="container-fluid p-0" id="canvasContainer" style="z-index: 2">
                 <canvas id="myCanvas"></canvas>
             </div>
 
-            <div id="video-background">
+            <div id="video-background" style="z-index: 1">
                 <video autoplay muted loop id="myVideo">
                     <source src="/backgrounds/desktop/car.mp4" type="video/mp4" />
                     Switch your browser bro how the FUCK do you not support MP4 VIDEOS
@@ -41,6 +41,6 @@ export const background = () => {
             </div>
 
             <div id="video-overlay"></div>
-        </div>
+        </>
     )
 }
