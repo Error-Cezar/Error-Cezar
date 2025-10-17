@@ -19,10 +19,6 @@ async function hashString(inputString: string): Promise<string> {
     return result;
 }
 
-site_app.get('/', async (c) => {
-    let totalv = await getTotalVisits()
-    return c.html(<Top visitCount={totalv} />)
-});
 site_app.use('/', async (c, next) => {
     const IP = getConnInfo(c).remote.address ?? randomUUIDv7();
     const hash = await hashString(IP);
@@ -38,6 +34,10 @@ site_app.use('/', async (c, next) => {
     await next();
     c.header('x-message', 'Visit sucessful, welcome stalker!');
 })
+site_app.get('/', async (c) => {
+    let totalv = await getTotalVisits()
+    return c.html(<Top visitCount={totalv} />)
+});
 
 site_app.get('/maxie', async (c) => {
   return c.text("https://iamawesome.com/ is a silly site\nand apparently maxie is a pretty cat")
