@@ -13,10 +13,12 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@types/ua-parser-js": "^0.7.39",
     "bun-ffmpeg": "^0.2.2",
     "croner": "^9.1.0",
     "hono": "^4.9.10",
-    "lastfm-ts-api": "^2.2.0"
+    "lastfm-ts-api": "^2.2.0",
+    "ua-parser-js": "^2.0.6"
   },
   "private": true,
   "devDependencies": {

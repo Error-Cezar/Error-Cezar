@@ -4,8 +4,6 @@ import { serveStatic, websocket } from 'hono/bun'
 import type { WSContext } from 'hono/ws';
 import { SQL } from "bun";
 
-import { readFileSync } from 'fs';
-import { join } from 'path';
 // -------
 import { LastFMUser } from 'lastfm-ts-api';
 // -------
@@ -34,12 +32,12 @@ const dbname = process.env.DB_NAME
 
 export const pg = new SQL(`postgres://${dbuser}:${dbpassword}@${dbhost}/${dbname}`);
 
-process.on("exit", async (code) => {
+process.once("exit", async (code) => {
     Log(`Closing database connection due to process exit with code: ${code}`);
     await pg.close();
 });
 
-process.on('SIGINT', () => {
+process.once('SIGINT', () => {
     Log('Received SIGINT. Exiting...');
     process.exit(0); // Optionally exit with a status code
 });
@@ -60,6 +58,7 @@ export function WS_Fire(ws: WSContext<any>) {
 }
 
 function broadcast() {
+  debugLog("Broadcasting Last.fm update to connected clients...")
   for (const client of getClients()) {
     WS_Fire(client);
   }
@@ -85,11 +84,11 @@ const FM_JOB = new Cron('*/3 * * * * *', () => {
   // check clients are connected
   if (Object.keys(getClients()).length === 0) return;
 
-  debugLog("Fetching last.fm data...")
+  // debugLog("Fetching last.fm data...")
   user.getRecentTracks({ user: FM_USER, limit: 1 }).then((value) => {
     let last = value.recenttracks.track[0]
     if (!last?.["@attr"] || !last?.["@attr"]?.nowplaying) {
-      debugLog("User is not currently playing anything on Last.fm")
+      // debugLog("User is not currently playing anything on Last.fm")
       if (!("track" in FM_LastFetch) || (FM_LastFetch.track !== last?.name)) {
         debugLog("User stopped playing music, broadcasting last played track")
         FM_LastFetch = {
@@ -105,10 +104,10 @@ const FM_JOB = new Cron('*/3 * * * * *', () => {
       return
     }
 
-    debugLog("User is currently playing something on Last.fm")
+    // debugLog("User is currently playing something on Last.fm")
 
     if (FM_LastFetch.hasOwnProperty("track") && (FM_LastFetch as FMData).track === last.name) {
-      debugLog("Same track as before, not broadcasting")
+      // debugLog("Same track as before, not broadcasting")
       return
     }
 
@@ -120,6 +119,8 @@ const FM_JOB = new Cron('*/3 * * * * *', () => {
       url: last.url,
       playing: true
     }
+
+    debugLog("New track detected, broadcasting update")
     broadcast()
   }).catch(console.error);
 });
@@ -135,15 +136,16 @@ ensureShorten(pg);
 
 const app = new Hono().use('*', serveStatic({ root: './public' }));
 
+app.onError((err, c) => {
+  console.error(`Error occurred during request to ${c.req.url}:`, err);
+  return c.text('Internal Server Error', 500);
+});
+
 app.route("/short", short_app)
 app.route("/", site_app)
 app.route("/", ws_app)
 app.route("/admin", admin_app)
 app.route("/convert", convert_app)
-
-app.get('/maxie', async (c) => {
-  return c.text("https://iamawesome.com/ is a silly site\nand apparently maxie is a pretty cat")
-});
 
 export default {
   port: 3000,
