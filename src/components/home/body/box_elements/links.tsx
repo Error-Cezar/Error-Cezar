@@ -3,8 +3,8 @@ export const links = () => {
         <>
             <div class="links align-self-center">
                 <a
-                    onclick="CopyClipboard('errorcezar', this)"
-                    data-tooltip="Copy Discord username"
+                    href="https://discord.com/users/362991657236561923"
+                    data-tooltip="Open Discord profile"
                     target="_blank"
                     class="color-white"
                 >
@@ -57,7 +57,7 @@ export const links = () => {
                 </a>
             </div>
 
-            <div class="links align-self-center" style="bottom: 20px !important;">
+            <div class="links align-self-center" style="bottom: 40px !important;">
                 <a
                     href="https://last.fm/user/ErrorCezar"
                     data-tooltip="Open LastFM"

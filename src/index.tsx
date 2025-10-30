@@ -125,11 +125,15 @@ const FM_JOB = new Cron('*/3 * * * * *', () => {
   }).catch(console.error);
 });
 
+if(ENV == "development") {
+  // FM_JOB.stop();
+  // debugLog("Last.fm cron job stopped, dev mode");
+}
+
 import { short_app } from "./routes/shorten";
 import { site_app } from "./routes/site";
 import { ws_app } from "./routes/ws";
 import { admin_app } from "./routes/admin";
-import { convert_app } from "./routes/convertor";
 
 import { ensureShorten } from "./modules/database";
 ensureShorten(pg);
@@ -145,7 +149,6 @@ app.route("/short", short_app)
 app.route("/", site_app)
 app.route("/", ws_app)
 app.route("/admin", admin_app)
-app.route("/convert", convert_app)
 
 export default {
   port: 3000,
