@@ -1,19 +1,18 @@
 import type { Context } from "hono";
 import { pg } from "..";
 
-export function checkIfValueExists(value: string) {
-    return pg`SELECT COUNT(*) FROM shorten WHERE ID = ${value}`.then(result => {
-        return result[0].count > 0;
-    });
+export async function checkIfValueExists(value: string) {
+  const result = await pg`SELECT COUNT(*) FROM shorten WHERE ID = ${value}`;
+  return result[0].count > 0;
 }
 
 export async function ensureShorten(pg: Bun.SQL) {
   console.log("Ensuring 'shorten' table exists...");
   const tableExists = await pg`
     SELECT EXISTS (
-        SELECT 1 
-        FROM information_schema.tables 
-        WHERE table_schema = 'public' 
+        SELECT 1
+        FROM information_schema.tables
+        WHERE table_schema = 'public'
         AND table_name = 'shorten'
     ) AS exists;
 `;
@@ -35,9 +34,9 @@ export async function ensureShorten(pg: Bun.SQL) {
   console.log("Ensuring 'apikeys' table exists...");
   const apiTableExists = await pg`
     SELECT EXISTS (
-        SELECT 1 
-        FROM information_schema.tables 
-        WHERE table_schema = 'public' 
+        SELECT 1
+        FROM information_schema.tables
+        WHERE table_schema = 'public'
         AND table_name = 'apikeys'
     ) AS exists;
 `;
@@ -57,9 +56,9 @@ export async function ensureShorten(pg: Bun.SQL) {
   console.log("Ensuring 'visits' table exists...");
   const visitsTableExists = await pg`
     SELECT EXISTS (
-        SELECT 1 
-        FROM information_schema.tables 
-        WHERE table_schema = 'public' 
+        SELECT 1
+        FROM information_schema.tables
+        WHERE table_schema = 'public'
         AND table_name = 'visits'
     ) AS exists;
 `;
@@ -80,33 +79,40 @@ export async function ensureShorten(pg: Bun.SQL) {
 }
 
 export function generateRandomShorten(length: number) {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let result = '';
-    for (let i = 0; i < length; i++) {
-        result += characters.charAt(Math.floor(Math.random() * characters.length));
-    }   
-    return result;
+  const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  let result = "";
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  return result;
 }
 
 export async function checkIfKeyExists(key: string) {
-    return pg`SELECT COUNT(*) FROM apikeys WHERE key = ${key}`.then(result => {
-        return result[0].count > 0;
-    }).catch(() => false);
+  return pg`SELECT COUNT(*) FROM apikeys WHERE key = ${key}`
+    .then((result) => {
+      return result[0].count > 0;
+    })
+    .catch(() => false);
 }
 
 export async function checkIfIpExists(ip: string) {
-    return pg`SELECT COUNT(*) FROM visits WHERE id = ${ip}`.then(result => {
-        return result[0].count > 0;
-    }).catch(() => false);
+  return pg`SELECT COUNT(*) FROM visits WHERE id = ${ip}`
+    .then((result) => {
+      return result[0].count > 0;
+    })
+    .catch(() => false);
 }
 
 export async function getTotalVisits() {
-    return pg`SELECT SUM(total) as total FROM visits`.then(result => {
-        return result[0].total as number || 0;
-    }).catch(() => 0);
+  return pg`SELECT SUM(total) as total FROM visits`
+    .then((result) => {
+      return (result[0].total as number) || 0;
+    })
+    .catch(() => 0);
 }
 
 export const MiddlewareHandler = async (token: string, c: Context) => {
-    const stat = await checkIfKeyExists(token);
-    return stat;
+  const stat = await checkIfKeyExists(token);
+  return stat;
 };
