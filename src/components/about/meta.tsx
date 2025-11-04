@@ -2,14 +2,14 @@ import { html } from "hono/html";
 
 export const meta = () => {
   return html`
-    <meta property="og:title" content="errorcezar.lol" />
+    <meta property="og:title" content="errorcezar.lol - About" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://errorcezar.lol" />
     <meta
       property="og:description"
       content="A place that may or may not be owned by some idiot called 'ErrorCezar'"
     />
-    <meta name="theme-color" content="#6d09e8" />
+    <meta name="theme-color" content="#E809D2" />
 
     <meta charset="UTF-8" />
     <meta

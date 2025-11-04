@@ -1,20 +1,29 @@
-@import 'tooltip.css';
-@import 'animations.css';
+@import "tooltip.css";
+@import "animations.css";
 
-@import 'components/player.css';
-@import 'components/tracker.css';
-@import 'components/box.css';
-@import 'components/terminal.css';
-@import 'components/video.css';
+@import "components/player.css";
+@import "components/tracker.css";
+@import "components/box.css";
+@import "components/terminal.css";
+@import "components/video.css";
 
-@import 'media/main.css';
+@import "media/main.css";
 
 body {
-  user-select: none;
-  font-family: 'Comic Neue', cursive;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+    user-select: none;
+    font-family: "Comic Neue", cursive;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Dark Glass-Themed Navbar */
+.glass-navbar {
+    background: rgba(0, 0, 0, 0.6) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
 }

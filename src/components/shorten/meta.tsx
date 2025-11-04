@@ -1,16 +1,22 @@
-import { html } from 'hono/html'
+import { html } from "hono/html";
 
 export const meta = () => {
   return html`
-    <meta property="og:title" content="errorcezar.lol" />
+    <meta property="og:title" content="errorcezar.lol - Shorten" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://errorcezar.lol" />
-    <meta property="og:description" content="A place that may or may not be owned by some idiot called 'ErrorCezar'" />
+    <meta
+      property="og:description"
+      content="A place that may or may not be owned by some idiot called 'ErrorCezar'"
+    />
     <meta name="theme-color" content="#E809D2" />
 
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
 
     <link rel="icon" type="image/x-icon" href="images/icon.ico" />
-`
+  `;
 };

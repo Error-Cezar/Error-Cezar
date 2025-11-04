@@ -1,10 +1,10 @@
 document.addEventListener("Music_Ready", function () {
-  if(!hasHWA) {
+  if (!hasHWA) {
     console.warn("Audio Visualizer disabled: Hardware Acceleration is off.");
     return;
   }
 
-  if(IsMobile) {
+  if (IsMobile) {
     console.warn("Audio Visualizer disabled: Mobile device detected.");
     return;
   }
@@ -18,15 +18,15 @@ document.addEventListener("Music_Ready", function () {
       frequencyBand: "base",
       count: 30,
       lineColor: "blue",
-    })
+    }),
   );
 
   wave.addAnimation(
     new wave.animations.Lines({
       frequencyBand: "lows",
       count: 30,
-      lineColor: "purple",
-    })
+      lineColor: "red",
+    }),
   );
 
   wave.addAnimation(
@@ -38,7 +38,7 @@ document.addEventListener("Music_Ready", function () {
       mirroredX: true,
       rounded: true,
       frequencyBand: "mids",
-    })
+    }),
   );
 
   wave.addAnimation(
@@ -50,7 +50,7 @@ document.addEventListener("Music_Ready", function () {
       mirroredX: true,
       rounded: true,
       frequencyBand: "highs",
-    })
+    }),
   );
 
   // manually resize the canvas when the window is resized
