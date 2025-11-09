@@ -1,6 +1,6 @@
 
-import { body_el } from '../components/home/body/body';
-import { HomeLayout } from '../components/home_layout';
+import { body_el } from './components/home/body/body';
+import { HomeLayout } from './components/home/layout';
 
 export const Top = (props: { visitCount: number }) => {
   return (

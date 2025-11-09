@@ -2,9 +2,11 @@ import { Cron } from "croner";
 import { Hono } from "hono";
 import { serveStatic, websocket } from "hono/bun";
 import type { WSContext } from "hono/ws";
+
 import { SQL } from "bun";
 
 // -------
+import Settings from "./settings.json";
 import { LastFMUser } from "lastfm-ts-api";
 // -------
 
@@ -135,9 +137,9 @@ const FM_JOB = new Cron("*/3 * * * * *", () => {
     .catch(console.error);
 });
 
-if (ENV == "development") {
-  // FM_JOB.stop();
-  // debugLog("Last.fm cron job stopped, dev mode");
+if (ENV == "development" && Settings.NoFMOnDev) {
+  FM_JOB.stop();
+  debugLog("Last.fm cron job stopped, dev mode");
 }
 
 import { short_app } from "./routes/shorten";

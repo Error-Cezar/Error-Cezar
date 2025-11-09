@@ -1,6 +1,6 @@
-import { links } from "../box_elements/links"
-import { player } from "../box_elements/player"
-import { fmtrack } from "../box_elements/lastfm"
+import { links } from "../box/links"
+import { player } from "../box/player"
+import { fmtrack } from "../box/lastfm"
 
 export const box = (visitCount: number) => {
     return (

@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { Top } from "../pages/main";
+import { Top } from "../pages/home";
 import { About } from "../pages/about";
 import { getConnInfo } from "hono/bun";
 
@@ -8,6 +8,7 @@ import { pg, debugLog } from "..";
 
 import { checkIfIpExists, getTotalVisits } from "../modules/database";
 import { UAParser } from "ua-parser-js";
+import { Projects } from "../pages/projects";
 
 export const site_app = new Hono();
 
@@ -59,7 +60,7 @@ site_app.get("/about", async (c) => {
 });
 
 site_app.get("/projects", async (c) => {
-  return c.redirect("https://soggy.cat/#sorrywastoolazytomakethepage");
+  return c.html(<Projects />);
 });
 
 site_app.get("/maxie", async (c) => {

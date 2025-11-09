@@ -1,6 +1,6 @@
 
-import { body_el } from '../components/shorten/body/body';
-import { ShortenLayout } from '../components/shorten_layout';
+import { body_el } from './components/shorten/body/body';
+import { ShortenLayout } from './components/shorten/layout';
 
 export const Shorten = () => {
   return (

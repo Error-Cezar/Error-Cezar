@@ -1,5 +1,9 @@
+import { navbar } from "../../../shared/navbar";
+
 export const body_el = () => {
     return (
+        <>
+        {navbar()}
         <div className="d-flex justify-content-center align-items-center" style={{ minHeight: "100vh" }}>
             <div className="card shadow p-4" style={{ minWidth: 340, background: "#f8f9fa", borderRadius: 16 }}>
                 <h4 className="mb-4 text-center">Shorten a Link</h4>
@@ -42,5 +46,6 @@ export const body_el = () => {
                 </form>
             </div>
         </div>
+        </>
     );
 }

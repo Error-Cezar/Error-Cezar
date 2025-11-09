@@ -48,7 +48,7 @@ export const links = () => {
                 </a>
 
                 <a
-                    onclick="CopyClipboard('bc1q329swh9rlpnn5pw97k4crjhsm6nhjlzgl4u7hl', this)"
+                    onclick="CopyClipboard('[OOPS, IM CHANGING IT SOON]', this)"
                     data-tooltip="Copy BTC Wallet"
                     target="_blank"
                     class="color-white"

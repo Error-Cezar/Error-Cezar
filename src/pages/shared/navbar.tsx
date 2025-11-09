@@ -22,15 +22,6 @@ export const navbar = () => {
             class="btn btn-sm"
             type="button"
             style="background-color: purple; border-color: purple; color: white;"
-            onclick="window.location.href='/short/new'"
-          >
-            Shorter
-          </button>
-
-          <button
-            class="btn btn-sm"
-            type="button"
-            style="background-color: purple; border-color: purple; color: white;"
             onclick="window.location.href='/about'"
           >
             About

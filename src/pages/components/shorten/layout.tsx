@@ -1,8 +1,10 @@
 import { html } from "hono/html";
-import { meta } from "./about/meta";
-import { hcss } from "./about/css";
 
-export const AboutLayout = (props: { title: string; children?: any }) => {
+import { meta } from "./meta";
+import { hcss } from "./css";
+import { shortafter } from "./body/after";
+
+export const ShortenLayout = (props: { title: string; children?: any }) => {
   return html`<!DOCTYPE html>
     <html lang="en">
       <head>
@@ -11,5 +13,6 @@ export const AboutLayout = (props: { title: string; children?: any }) => {
       <body class="bg-dark">
         ${props.children}
       </body>
+      ${shortafter()}
     </html>`;
 };

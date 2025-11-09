@@ -1,0 +1,26 @@
+@keyframes rainbow {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+.rainbow-text {
+    background: linear-gradient(to right, yellow, orange, aqua, red, grey, black, pink);
+    background-size: 500% 500%;
+    font-size: 1.5rem;
+    animation: rainbow 5s linear infinite alternate;
+    color: transparent;
+    background-clip: text;
+    display: inline-block;
+    margin-bottom: 2rem;
+}
+
+.rainbow-name {
+    background: radial-gradient(black, pink); /* in your area */
+    background-size: 200% 200%;
+    animation: rainbow 2s ease infinite alternate;
+    color: transparent;
+    background-clip: text;
+    display: inline-block;
+    margin-bottom: 2rem;
+}
