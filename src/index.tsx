@@ -148,6 +148,7 @@ import { ws_app } from "./routes/ws";
 import { admin_app } from "./routes/admin";
 
 import { ensureShorten } from "./modules/database";
+import { articles_app } from "./routes/articles";
 ensureShorten(pg);
 
 const app = new Hono().use("*", serveStatic({ root: "./public" }));
@@ -161,6 +162,7 @@ app.route("/short", short_app);
 app.route("/", site_app);
 app.route("/", ws_app);
 app.route("/admin", admin_app);
+app.route("/blog", articles_app);
 
 export default {
   port: 3000,
