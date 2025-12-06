@@ -47,14 +47,14 @@ export const links = () => {
                     <i class="fa-brands fa-twitter"></i>
                 </a>
 
-                <a
+                {/*<a
                     onclick="CopyClipboard('[OOPS, IM CHANGING IT SOON]', this)"
                     data-tooltip="Copy BTC Wallet"
                     target="_blank"
                     class="color-white"
                 >
                     <i class="fa-brands fa-bitcoin"></i>
-                </a>
+                </a>*/}
             </div>
 
             <div class="links align-self-center" style="bottom: 40px !important;">

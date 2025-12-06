@@ -17,25 +17,19 @@ export const background = () => {
                 <canvas id="myCanvas"></canvas>
             </div>
 
-            <div id="video-background" style="z-index: 1">
-                <video autoplay muted loop id="myVideo">
-                    <source src="/backgrounds/desktop/car.mp4" type="video/mp4" />
-                    Switch your browser bro how the FUCK do you not support MP4 VIDEOS
-                </video>
+            <div id="tsparticles" style="z-index: 1"> </div>
 
-                <div id="audio-background">
-                    <div id="music-controls">
-                        <input
-                            type="range"
-                            id="volume-slider"
-                            min="0"
-                            max="1"
-                            value=".3"
-                            step=".001"
-                        />
-                        <div id="progress-container">
-                            <div id="progress-bar"></div>
-                        </div>
+            <div id="audio-background">
+                <div id="music-controls">
+                    <input
+                        type="range"
+                        id="volume-slider"
+                        min="0"
+                        max="1"
+                        step=".001"
+                    />
+                    <div id="progress-container">
+                        <div id="progress-bar"></div>
                     </div>
                 </div>
             </div>

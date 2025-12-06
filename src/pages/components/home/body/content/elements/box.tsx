@@ -13,11 +13,12 @@ export const box = (visitCount: number) => {
                     alt="Icon"
                 />
                 <p
+                    class="bitcount"
                     id="username-container"
-                    style="color: white; font-weight: bold; font-size: 32px"
+                    style="color: white; font-weight: bold; font-size: 32px;"
                 ></p>
             </div>
-            
+
             {fmtrack()}
             {player()}
             {links()}

@@ -17,7 +17,7 @@
   let currentSongIndex = 0;
   const song = new Audio();
   let playing = false;
-  song.volume = 0.5;
+  song.volume = 0.2;
 
   function initMusicPlayer() {
     loadSong(currentSongIndex);
@@ -69,7 +69,7 @@
     musicName.innerText = name;
 
     const url = new URL('/music/' + src, import.meta.url).href
-    song.src = url; 
+    song.src = url;
   }
 
   function togglePlayPause() {
