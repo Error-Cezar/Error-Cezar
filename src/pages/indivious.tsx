@@ -22,10 +22,7 @@ export const IndiviousApp = async (props: {
         <meta property="og:image" content={props.data.thumbnail_url} />
 
         <meta property="og:video:url" content={props.data.video} />
-        <meta
-          property="og:video:secure_url"
-          content="https://www.youtube.com/embed/JSFG-IE8n_c"
-        />
+        <meta property="og:video:secure_url" content={props.data.video} />
 
         <meta property="og:url" content={props.data.url} />
 
