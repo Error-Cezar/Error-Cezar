@@ -27,7 +27,7 @@ $(document).ready(function () {
 
     let APIKey = $("apiKey").val();
 
-    let CompressedContent = LZString.compress(articleContent);
+    let CompressedContent = articleContent.replace(/(\r\n|\n|\r)/g, "/[LB]");
 
     const data = {
       Title: articleName,

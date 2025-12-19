@@ -134,7 +134,9 @@ const FM_JOB = new Cron("*/3 * * * * *", () => {
       debugLog("New track detected, broadcasting update");
       broadcast();
     })
-    .catch(console.error);
+    .catch((err => {
+      console.info("Error fetching Last.fm data:", err);
+    }));
 });
 
 if (ENV == "development" && Settings.NoFMOnDev) {
@@ -149,6 +151,7 @@ import { admin_app } from "./routes/admin";
 
 import { ensureShorten } from "./modules/database";
 import { articles_app } from "./routes/articles";
+import { indivious_app } from "./routes/indivious";
 ensureShorten(pg);
 
 const app = new Hono().use("*", serveStatic({ root: "./public" }));
@@ -163,6 +166,7 @@ app.route("/", site_app);
 app.route("/", ws_app);
 app.route("/admin", admin_app);
 app.route("/blog", articles_app);
+app.route("/indivious", indivious_app)
 
 export default {
   port: 3000,

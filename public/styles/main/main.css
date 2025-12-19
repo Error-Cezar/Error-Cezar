@@ -1,0 +1,19 @@
+@import "../shared/tooltip.css";
+@import "../shared/animations.css";
+
+@import "components/player.css";
+@import "components/tracker.css";
+@import "components/box.css";
+@import "components/terminal.css";
+
+@import "media.css";
+
+body {
+    user-select: none;
+    font-family: "Comic Neue", cursive;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}

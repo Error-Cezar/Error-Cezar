@@ -1,6 +1,6 @@
 import { Hono } from "hono";
-import LZString from "../../public/js/modules/lz-string";
 
+import { ArticleList } from "../pages/article_list";
 import { ArticleNew } from "../pages/article_new";
 import { ArticleShow } from "../pages/article_show";
 import { validateRequest } from "../validators/articles";
@@ -10,21 +10,8 @@ import { getArticle } from "../modules/database";
 
 export const articles_app = new Hono();
 
-articles_app.get("/", (c) => {
-  return c.json({ meow: true });
-});
-
-articles_app.get("/get/:id", async (c) => {
-  const articleID = c.req.param("id"); // Get the dynamic parameter 'id'
-
-  const article = await getArticle(articleID);
-  if (!article) {
-    c.status(404);
-    return c.json({ message: `No such article as ${articleID}`, status: 404 });
-  }
-
-  c.status(200);
-  return c.json(article);
+articles_app.get("/list", (c) => {
+  return c.html(<ArticleList Data={{}} />);
 });
 
 articles_app.get("/new", (c) => {
@@ -57,15 +44,20 @@ articles_app.get("/:id", async (c) => {
     return c.json({ message: `No such article as ${articleID}`, status: 404 });
   }
 
-  let ArticleContent = LZString.decompress(article.article_content);
+  console.log(article);
+
+  const finalcontent = article.article_content.replace(/\/\[LB\]/g, "\n\n")
+
+  const publishedDate = new Date(article.date_published).toLocaleDateString();
+  const editedDate = article.date_edited ? new Date(article.date_edited).toLocaleDateString() : undefined;
 
   const data = {
     Name: article.article_name,
-    Content: ArticleContent,
+    Content: finalcontent,
     Description: article.article_description,
     Author: article.author,
-    edited: article.date_edited,
-    published: article.date_published,
+    edited: editedDate,
+    published: publishedDate,
   };
 
   c.status(200);

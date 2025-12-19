@@ -1,3 +1,17 @@
+@import "../shared/tooltip.css";
+@import "../shared/animations.css";
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient( darkblue, black);
+}
+
 @keyframes rainbow {
     0%{background-position:0% 50%}
     50%{background-position:100% 50%}
@@ -16,9 +30,9 @@
 }
 
 .rainbow-name {
-    background: linear-gradient(to right, dodgerblue, deepskyblue);
-    background-size: 500% 500%;
-    animation: rainbow 2s linear infinite alternate;
+    background: radial-gradient(black, pink); /* in your area */
+    background-size: 200% 200%;
+    animation: rainbow 2s ease infinite alternate;
     color: transparent;
     background-clip: text;
     display: inline-block;

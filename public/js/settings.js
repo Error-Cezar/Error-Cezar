@@ -33,7 +33,7 @@ const GLOBAL_SETTINGS = {
     },
   ],
 
-  Titles: ["ErrorCezar", "errorcezar.lol", "baby im a rockstar", "Who else got em obssessed like JENNIE?"],
+  Titles: ["ErrorCezar", "errorcezar.lol", "baby im a rockstar"],
   Title_Interval: 3000,
 
   usernameVariants: [

@@ -11,12 +11,7 @@ export const ProjectsLayout = (props: { title: string; children?: any }) => {
       <head>
         ${meta()} ${hcss()}
       </head>
-      <style>
-        body {
-          background: linear-gradient(to bottom, darkblue, black) !important;
-        }
-      </style>
-      <body class="bg-dark">
+      <body>
         ${pizza()} ${props.children}
       </body>
       ${scripts()}

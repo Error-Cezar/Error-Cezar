@@ -11,19 +11,14 @@ import { MiddlewareHandler } from "../modules/database";
 export const short_app = new Hono();
 
 short_app.get('/', (c) => {
-    return c.json({meow: true})
-})
-
-short_app.get('/new', (c) => {
     return c.html(<Shorten />)
 })
 
-
-short_app.use('/new', bearerAuth({
+short_app.use('/', bearerAuth({
     verifyToken: MiddlewareHandler
   })
 )
-short_app.post('/new', validator("json", validateRequest), async (c) => {
+short_app.post('/', validator("json", validateRequest), async (c) => {
     const data = c.req.valid("json");
     if (typeof data === "string") {
         return c.json({error: data});
@@ -47,13 +42,13 @@ short_app.get("/:id", async (c) => {
         if (result.length === 0) {
             debugLog("Shorten not found:", shorten);
             c.status(404);
-            return c.json({error: "Shorten not found"});
-        }  
+            return c.json({error: "Not found"});
+        }
         debugLog("Found shorten:", shorten, "->", result[0].link);
         return c.redirect(result[0].link);
     } catch (e) {
         c.status(500);
-        console.error(e);
+        console.error("Error searching for short link:", e);
         return c.json({error: "Internal server error"});
     }
 })

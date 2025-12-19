@@ -5,7 +5,7 @@ import { hcss } from "./css";
 import { pizza } from "../../shared/pizza";
 import { scripts } from "./scripts";
 
-export const ArticleShowLayout = (props: { title: string; children?: any }) => {
+export const ArticleListLayout = (props: { title: string; children?: any }) => {
   return html`<!DOCTYPE html>
     <html lang="en">
       <head>

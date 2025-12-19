@@ -17,7 +17,7 @@ export const AboutLayout = (props: { title: string; children?: any }) => {
           background: linear-gradient(to bottom, black, darkblue) !important;
         }
       </style>
-      <body class="bg-dark">
+      <body>
         ${pizza()} ${props.children}
       </body>
       ${scripts()}

@@ -2,16 +2,22 @@ import { html } from "hono/html";
 import { meta } from "./meta";
 import { hcss } from "./css";
 
-import { pizza } from "../../shared/pizza";
 import { scripts } from "./scripts";
 
-export const ArticleShowLayout = (props: { title: string; children?: any }) => {
+import { pizza } from "../../shared/pizza";
+
+export const IndiviousLayout = (props: { title: string; children?: any }) => {
   return html`<!DOCTYPE html>
     <html lang="en">
       <head>
         ${meta()} ${hcss()}
       </head>
-      <body class="bg-dark">
+      <style>
+        body {
+          background: linear-gradient(to bottom, black, darkblue) !important;
+        }
+      </style>
+      <body>
         ${pizza()} ${props.children}
       </body>
       ${scripts()}
