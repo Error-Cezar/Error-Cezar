@@ -62,9 +62,3 @@ site_app.get("/about", async (c) => {
 site_app.get("/projects", async (c) => {
   return c.html(<Projects />);
 });
-
-site_app.get("/maxie", async (c) => {
-  return c.text(
-    "https://iamawesome.com/ is a silly site\nand apparently maxie is a pretty cat",
-  );
-});

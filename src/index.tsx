@@ -151,6 +151,7 @@ import { admin_app } from "./routes/admin";
 
 import { ensureShorten } from "./modules/database";
 import { articles_app } from "./routes/articles";
+import { misc_app } from "./routes/misc";
 ensureShorten(pg);
 
 const app = new Hono().use("*", serveStatic({ root: "./public" }));
@@ -160,11 +161,14 @@ app.onError((err, c) => {
   return c.text("Internal Server Error", 500);
 });
 
-app.route("/short", short_app);
 app.route("/", site_app);
 app.route("/", ws_app);
-app.route("/admin", admin_app);
+app.route("/", misc_app);
+
+app.route("/short", short_app);
 app.route("/blog", articles_app);
+
+app.route("/admin", admin_app);
 
 export default {
   port: 3000,
