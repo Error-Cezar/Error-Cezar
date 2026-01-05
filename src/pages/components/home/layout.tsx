@@ -5,7 +5,6 @@ import { meta } from "./meta";
 import { hcss } from "./css";
 
 import { scripts } from "./scripts";
-import { pizza } from "../../shared/pizza";
 
 export const HomeLayout = (props: { title: string; children?: any }) => {
   return html`<!DOCTYPE html>
@@ -15,7 +14,7 @@ export const HomeLayout = (props: { title: string; children?: any }) => {
       </head>
       ${before()}
       <body class="bg-dark">
-        ${pizza()} ${props.children}
+        ${props.children}
       </body>
       ${scripts()}
     </html>`;

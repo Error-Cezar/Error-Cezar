@@ -4,8 +4,6 @@ import { hcss } from "./css";
 
 import { scripts } from "./scripts";
 
-import { pizza } from "../../shared/pizza";
-
 export const AboutLayout = (props: { title: string; children?: any }) => {
   return html`<!DOCTYPE html>
     <html lang="en">
@@ -18,7 +16,7 @@ export const AboutLayout = (props: { title: string; children?: any }) => {
         }
       </style>
       <body>
-        ${pizza()} ${props.children}
+        ${props.children}
       </body>
       ${scripts()}
     </html>`;

@@ -2,7 +2,6 @@ import { html } from "hono/html";
 import { meta } from "./meta";
 import { hcss } from "./css";
 
-import { pizza } from "../../shared/pizza";
 import { scripts } from "./scripts";
 
 export const ArticleNewLayout = (props: { title: string; children?: any }) => {
@@ -17,7 +16,7 @@ export const ArticleNewLayout = (props: { title: string; children?: any }) => {
         }
       </style>
       <body class="bg-dark">
-        ${pizza()} ${props.children}
+        ${props.children}
       </body>
       ${scripts()}
     </html>`;
