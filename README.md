@@ -1,7 +1,5 @@
-*GitHub have a lot of cool README stats you can find some [here](https://github.com/anuraghazra/github-readme-stats) [https://github.com/anuraghazra/github-readme-stats]*
-
-[![mystats](https://github-readme-stats.vercel.app/api?username=Error-Cezar&theme=algolia&hide=stars,issues)][mystats]
-[![langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Error-Cezar&layout=compact&theme=algolia&langs_count=4)][langs]
-
-[mystats]: https://github.com/Error-Cezar
-[langs]: https://github.com/anuraghazra/github-readme-stats
+# [KeepAndroidOpen](https://keepandroidopen.org/)
+<a href="https://keepandroidopen.org/">
+    <img src="https://github.com/keepandroidopen/keepandroidopen.github.io/blob/main/public/img/altered-deal.png" alt="KeepAndroidOpen" align="left" float="left" width="206"/>
+</a>
+From 2026/2027 onward, Google will require developer verification for all Android apps on certified devices, including those installed outside of the Play Store.
