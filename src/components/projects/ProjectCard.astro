@@ -1,0 +1,59 @@
+---
+export interface Project {
+  title: string;
+  description: string;
+  image: string;
+  link: string;
+}
+
+interface Props extends Project {}
+
+const { title, description, image, link } = Astro.props;
+---
+
+<article class="card">
+  <img src={image} alt="Descripción de la imagen 2" loading="lazy" width="201" height="103" />
+  <h3>{title}</h3>
+  <p>{description}</p>
+  <a href={link}>Leer más</a>
+</article>
+
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: var(--secundary-background-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    &:hover {
+      transform: translateY(-5px);
+    }
+    img {
+      border-radius: 10px;
+      margin-bottom: 15px;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+    h3 {
+      margin: 10px 0;
+      font-size: 1.3em;
+    }
+    p {
+      font-size: 1em;
+      color: var(--text-color);
+      margin-bottom: 15px;
+    }
+    a {
+      text-decoration: none;
+      color: var(--primary-color);
+      font-weight: bold;
+      &:hover {
+        text-decoration: underline;
+        color: currentColor;
+      }
+    }
+  }
+</style>

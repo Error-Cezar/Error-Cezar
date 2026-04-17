@@ -1,0 +1,65 @@
+---
+import { skills } from '../../data/skills';
+---
+
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="carousel-container">
+    <ul class="skills-list">
+      {skills.map((skill) => <li>{<skill.icon width={48} height={48} />}</li>)}
+    </ul>
+  </div>
+</section>
+
+<style>
+  #skills {
+    width: 100%;
+  }
+  .carousel-container {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 15%,
+      black 85%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+    .skills-list {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 2rem;
+      list-style: none;
+      margin: 0 auto;
+      padding: 0;
+      justify-content: center;
+      align-items: center;
+      /*transform: translateX(10rem);*/
+      /*animation: carousel 10s linear infinite forwards;*/
+
+      li {
+        color: #fff;
+        border-radius: 5px;
+        font-size: 0.9em;
+        transition:
+          transform 0.2s,
+          color 0.2s;
+
+        &:hover {
+          color: var(--primary-color);
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+
+  @keyframes carousel {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-20rem);
+    }
+  }
+</style>

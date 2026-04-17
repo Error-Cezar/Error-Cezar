@@ -1,0 +1,60 @@
+---
+import { aboutMe } from '../../data/aboutMe';
+---
+
+<section id="hero">
+  <header class="hero-header">
+    <picture class="hero-banner"> </picture>
+  </header>
+  <picture class="hero-logo">
+    <img src={aboutMe.profile.picture} alt={aboutMe.profile.altText} width="200" height="200" />
+  </picture>
+  <div class="hero-content">
+    <h1>{aboutMe.name}</h1>
+    <p>
+      {aboutMe.description}
+    </p>
+    <!-- <a href={`mailto:${aboutMe.contact.email}`} data-cta="contact me">Contact Me</a> -->
+  </div>
+</section>
+
+<style>
+  #hero {
+    width: 100%;
+    .hero-banner {
+      width: 100%;
+      img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+    }
+    .hero-content {
+      h1 {
+        font-size: 2.5em;
+      }
+      p {
+        max-width: 600px;
+        font-size: 1.2em;
+        color: var(--text-color);
+      }
+      a[data-cta] {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: var(--primary-color);
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        width: fit-content;
+
+        &:hover {
+          background-color: transparent;
+          color: var(--primary-color);
+          border: 2px solid var(--primary-color);
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+</style>

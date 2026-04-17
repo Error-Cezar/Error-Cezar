@@ -1,0 +1,37 @@
+---
+import ProjectCard, { type Project } from '../projects/ProjectCard.astro';
+import { projects } from '../../data/projects.js';
+---
+
+<section id="projects">
+  <h2>Projects</h2>
+  <!-- <ul class="card-list">
+    {
+      projects.map((project: Project) => (
+        <li>
+          <ProjectCard {...project} />
+        </li>
+      ))
+    }
+  </ul> -->
+  <h2>NOT READY YET</h2>
+  <h2>WEB DEV IS ANNOYING EXPECT ME TO TAKE TIME ON THIS</h2>
+</section>
+
+<style>
+  #projects {
+    .card-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(228px, 1fr));
+      gap: 2rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      li {
+        &:hover {
+          transform: translateY(-5px);
+        }
+      }
+    }
+  }
+</style>

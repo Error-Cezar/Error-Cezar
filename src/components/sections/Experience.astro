@@ -1,0 +1,55 @@
+---
+import { experience } from '../../data/experience';
+import ExperienceCard, { type ExperienceItem } from '../Experience/ExperienceCard.astro';
+---
+
+<section id="experience">
+  <h2>Experience</h2>
+  <ul class="timeline">
+    {
+      experience.map((experience: ExperienceItem) => (
+        <li class="timeline-item">
+          <ExperienceCard {...experience} />
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<style>
+  #experience {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    .timeline {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      &:before {
+        content: '';
+        position: absolute;
+        left: 14px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background-color: var(--primary-color);
+      }
+      .timeline-item {
+        position: relative;
+        margin-bottom: 20px;
+        padding-left: 40px;
+        &:before {
+          content: '';
+          position: absolute;
+          left: 10px;
+          top: 5px;
+          width: 10px;
+          height: 10px;
+          background-color: var(--primary-color);
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+</style>

@@ -1,0 +1,22 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio",
+  "main": "index.js",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "author": "N/A",
+  "license": "MIT",
+  "dependencies": {
+    "@fontsource-variable/roboto-mono": "^5.2.8",
+    "astro": "^6.1.7",
+    "prettier": "^3.8.3",
+    "simple-icons-astro": "^16.1.0"
+  },
+  "devDependencies": {
+    "prettier-plugin-astro": "^0.14.1"
+  }
+}
