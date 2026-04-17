@@ -14,10 +14,21 @@ const { title, description, image } = Astro.props;
 <!doctype html>
 <html lang="en">
   <head>
+    <meta property="og:title" content="errorcezar.lol" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://errorcezar.lol" />
+    <meta
+      property="og:description"
+      content="A place that may or may not be owned by someone called 'ErrorCezar'"
+    />
+    <meta name="theme-color" content="#6d09e8" />
+
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
-    <meta name="description" content={description} />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
     <meta property="og:image" content={image ?? '/Pfp.gif'} />
   </head>
 
