@@ -140,3 +140,5 @@ Disallow:
 # disallow all other bots
 User-agent: *
 Disallow: /
+
+Sitemap: https://errorcezar.lol/sitemap-index.xml

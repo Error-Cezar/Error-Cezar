@@ -1,13 +1,18 @@
 ---
-import { aboutMe } from '../../data/aboutMe';
+import { aboutMe } from "../../data/aboutMe";
 ---
 
 <section id="hero">
-  <header class="hero-header">
+  <!-- <header class="hero-header">
     <picture class="hero-banner"> </picture>
-  </header>
+  </header> -->
   <picture class="hero-logo">
-    <img src={aboutMe.profile.picture} alt={aboutMe.profile.altText} width="200" height="200" />
+    <img
+      src={aboutMe.profile.picture}
+      alt={aboutMe.profile.altText}
+      width="200"
+      height="200"
+    />
   </picture>
   <div class="hero-content">
     <h1>{aboutMe.name}</h1>

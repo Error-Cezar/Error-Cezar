@@ -1,35 +1,40 @@
-import type { SvgComponent } from 'astro/types';
-import type { ImageMetadata } from 'astro';
+import {
+  siTypescript,
+  siPython,
+  siJavascript,
+  siLuau,
+  siLinux,
+} from "simple-icons";
 
-import Roblox from '@/assets/icons/roblox.svg';
-import Typescript from '@/assets/icons/typescript.svg';
-import Python from '@/assets/icons/python.svg';
-import Javascript from '@/assets/icons/javascript.svg';
-import Luau from '@/assets/icons/luau.svg';
-type Skill = {
-  name: string;
-  icon: SvgComponent & ImageMetadata;
+type SimpleIcon = {
+  svg: string;
+  title: string;
 };
 
-export const skills = [
+type Skill = {
+  name: string;
+  icon: SimpleIcon | any;
+};
+
+export const skills: Skill[] = [
   {
-    name: 'Typescript',
-    icon: Typescript,
+    name: "TypeScript",
+    icon: siTypescript,
   },
   {
-    name: 'Roblox',
-    icon: Roblox,
+    name: "Python",
+    icon: siPython,
   },
   {
-    name: 'Python',
-    icon: Python,
+    name: "JavaScript",
+    icon: siJavascript,
   },
   {
-    name: 'JavaScript',
-    icon: Javascript,
+    name: "Luau",
+    icon: siLuau,
   },
   {
-    name: 'Luau',
-    icon: Luau,
+    name: "Linux",
+    icon: siLinux,
   },
-] as Skill[];
+];

@@ -1,21 +1,38 @@
 ---
-import ProjectCard, { type Project } from '../projects/ProjectCard.astro';
-import { projects } from '../../data/projects.js';
+import { getCollection } from "astro:content";
+import ProjectCard, { type Project } from "../projects/ProjectCard.astro";
+
+const entries = await getCollection(
+  "projects",
+  ({ data }) => !data.draft && data.featured,
+);
+const projects: Project[] = entries
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .map((entry) => ({
+    title: entry.data.title,
+    description: entry.data.description,
+    image: entry.data.image?.src,
+    link: `/projects/${entry.id}`,
+  }));
 ---
 
 <section id="projects">
-  <h2>Projects</h2>
-  <!-- <ul class="card-list">
+  <h2>Featured Projects</h2>
+  <ul class="card-list">
     {
-      projects.map((project: Project) => (
-        <li>
-          <ProjectCard {...project} />
-        </li>
-      ))
+      entries.length === 0 ? (
+        <h2>Nothing here yet...</h2>
+      ) : (
+        projects.map((project: Project) => (
+          <li>
+            <ProjectCard {...project} />
+          </li>
+        ))
+      )
     }
-  </ul> -->
-  <h2>NOT READY YET</h2>
-  <h2>WEB DEV IS ANNOYING EXPECT ME TO TAKE TIME ON THIS</h2>
+  </ul>
+  <!-- <h2>NOT READY YET</h2>
+  <h2>WEB DEV IS ANNOYING EXPECT ME TO TAKE TIME ON THIS</h2> -->
 </section>
 
 <style>
@@ -27,7 +44,10 @@ import { projects } from '../../data/projects.js';
       list-style: none;
       margin: 0;
       padding: 0;
+      justify-items: center;
       li {
+        width: 100%;
+        max-width: 320px;
         &:hover {
           transform: translateY(-5px);
         }

@@ -1,12 +1,29 @@
 ---
-import { skills } from '../../data/skills';
+import { skills } from "../../data/skills";
+
+type SimpleIcon = {
+  svg: string;
+  title: string;
+};
 ---
 
 <section id="skills">
   <h2>Skills</h2>
   <div class="carousel-container">
     <ul class="skills-list">
-      {skills.map((skill) => <li>{<skill.icon width={48} height={48} />}</li>)}
+      {
+        skills.map((skill) => (
+          <li title={skill.name}>
+            {
+              <svg
+                class="skill-icon"
+                viewBox="0 0 24 24"
+                set:html={skill.icon.svg}
+              />
+            }
+          </li>
+        ))
+      }
     </ul>
   </div>
 </section>
@@ -17,7 +34,7 @@ import { skills } from '../../data/skills';
   }
   .carousel-container {
     width: 100%;
-    overflow-x: auto;
+    overflow: hidden;
     -webkit-mask-image: linear-gradient(
       to right,
       transparent 0%,
@@ -25,7 +42,13 @@ import { skills } from '../../data/skills';
       black 85%,
       transparent 100%
     );
-    mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 15%,
+      black 85%,
+      transparent 100%
+    );
     .skills-list {
       display: flex;
       flex-wrap: nowrap;
@@ -35,8 +58,7 @@ import { skills } from '../../data/skills';
       padding: 0;
       justify-content: center;
       align-items: center;
-      /*transform: translateX(10rem);*/
-      /*animation: carousel 10s linear infinite forwards;*/
+      overflow: hidden;
 
       li {
         color: #fff;
@@ -45,10 +67,19 @@ import { skills } from '../../data/skills';
         transition:
           transform 0.2s,
           color 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         &:hover {
           color: var(--primary-color);
           transform: scale(1.1);
+        }
+
+        .skill-icon {
+          width: 48px;
+          height: 48px;
+          fill: currentColor;
         }
       }
     }

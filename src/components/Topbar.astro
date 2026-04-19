@@ -1,0 +1,60 @@
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="/">ErrorCezar</a>
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/projects">Projects</a>
+      <a href="#">----</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background-color: var(--background-color);
+    border-bottom: 1px solid var(--primary-color);
+  }
+
+  .topbar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .brand {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    padding: 0.35rem 0.7rem;
+    border-radius: 6px;
+    transition:
+      color 0.2s,
+      background-color 0.2s,
+      transform 0.2s;
+  }
+
+  .nav a:hover {
+    color: var(--primary-color-dark);
+    background-color: var(--primary-color);
+    transform: translateY(-1px);
+  }
+</style>

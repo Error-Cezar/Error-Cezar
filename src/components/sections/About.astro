@@ -1,6 +1,6 @@
 ---
-import { socialMediaIcons } from '../../assets/social/util';
-import { aboutMe } from '../../data/aboutMe';
+import { socials } from "../../data/socials";
+import { aboutMe } from "../../data/aboutMe";
 ---
 
 <section id="about">
@@ -18,16 +18,18 @@ import { aboutMe } from '../../data/aboutMe';
       </picture>
       <div class="social-media">
         {
-          Object.entries(aboutMe.socialMedia).map(([key, value]) => {
-            const IconComponent = socialMediaIcons[key as keyof typeof socialMediaIcons];
-
-            return (
-              <a href={value} target="_blank" rel="noopener noreferrer">
-                <IconComponent width={40} height={40} />
-                <span class="sr-only">{key}</span>
-              </a>
-            );
-          })
+          socials.map((value) => (
+            <a href={value.link} target="_blank" rel="noopener noreferrer">
+              <svg
+                class="social-icon"
+                viewBox="0 0 24 24"
+                width="32"
+                height="32"
+                set:html={value.icon.svg}
+              />
+              <span class="sr-only">{value.name}</span>
+            </a>
+          ))
         }
       </div>
     </div>
@@ -102,7 +104,16 @@ import { aboutMe } from '../../data/aboutMe';
     opacity: 0;
   }
   .social-media {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
     gap: 1rem;
+    justify-items: center;
+    justify-content: center;
+  }
+
+  .social-icon {
+    width: 32px;
+    height: 32px;
+    fill: currentColor;
   }
 </style>

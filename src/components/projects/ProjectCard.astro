@@ -2,7 +2,7 @@
 export interface Project {
   title: string;
   description: string;
-  image: string;
+  image?: string;
   link: string;
 }
 
@@ -12,10 +12,20 @@ const { title, description, image, link } = Astro.props;
 ---
 
 <article class="card">
-  <img src={image} alt="Descripción de la imagen 2" loading="lazy" width="201" height="103" />
+  {
+    image && (
+      <img
+        src={image}
+        alt="Descripción de la imagen 2"
+        loading="lazy"
+        width="201"
+        height="103"
+      />
+    )
+  }
   <h3>{title}</h3>
   <p>{description}</p>
-  <a href={link}>Leer más</a>
+  <a href={link}>Learn more</a>
 </article>
 
 <style>

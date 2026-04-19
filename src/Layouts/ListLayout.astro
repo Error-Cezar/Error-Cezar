@@ -1,0 +1,178 @@
+---
+import Layout from "./Layout.astro";
+import type { ContentEntry } from "../types";
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  entries: ContentEntry[];
+}
+
+const { title, description = "", entries, ogImage } = Astro.props;
+
+const formatDate = (date: Date) =>
+  date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+---
+
+<Layout title={title} description={description} image={ogImage}>
+  <section id="list-page">
+    <header class="list-header">
+      <h1>{title}</h1>
+      {description && <p class="list-description">{description}</p>}
+    </header>
+
+    {
+      entries.length === 0 ? (
+        <div class="empty-state">
+          <h2>Nothing here yet...</h2>
+          <p>Check back soon for new content!</p>
+        </div>
+      ) : (
+        <ul class="list-grid">
+          {entries.map((entry) => (
+            <li>
+              <a class="list-card" href={`/projects/${entry.id}`}>
+                {entry.data.image?.src && (
+                  <div class="card-image">
+                    <img
+                      src={entry.data.image.src}
+                      alt={entry.data.image?.alt ?? entry.data.title}
+                      loading="lazy"
+                    />
+                  </div>
+                )}
+                <div class="card-body">
+                  <h3>{entry.data.title}</h3>
+                  <p>{entry.data.description}</p>
+                  <div class="card-meta">
+                    {entry.data.pubDate && (
+                      <time datetime={entry.data.pubDate.toISOString()}>
+                        {formatDate(entry.data.pubDate)}
+                      </time>
+                    )}
+                    {entry.data.tags?.length ? (
+                      <div class="card-tags">
+                        {entry.data.tags.map((tag) => (
+                          <span class="tag">{tag}</span>
+                        ))}
+                      </div>
+                    ) : null}
+                  </div>
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </section>
+</Layout>
+
+<style>
+  #list-page {
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .list-header h1 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+  }
+
+  .list-description {
+    color: var(--text-color);
+  }
+
+  .empty-state {
+    padding: 2rem;
+    border-radius: 10px;
+    background-color: var(--secundary-background-color);
+    text-align: center;
+  }
+
+  .list-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+  }
+
+  .list-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: var(--secundary-background-color);
+    border-radius: 10px;
+    padding: 1rem;
+    text-decoration: none;
+    color: inherit;
+    transition:
+      transform 0.2s,
+      box-shadow 0.2s;
+  }
+
+  .list-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+  }
+
+  .card-image img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .card-body h3 {
+    margin: 0;
+    font-size: 1.2rem;
+  }
+
+  .card-body p {
+    margin: 0;
+    color: var(--text-color);
+  }
+
+  .card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    align-items: center;
+    margin-top: 0.5rem;
+  }
+
+  time {
+    font-size: 0.85rem;
+    color: var(--secondary-color);
+    font-weight: 600;
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 0.3rem 0.6rem;
+    background-color: var(--primary-color-dark);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+</style>
