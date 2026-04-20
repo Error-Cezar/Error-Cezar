@@ -1,0 +1,260 @@
+---
+draft: false
+featured: true
+title: LightBorn
+description: A comprehensive breakdown of LightBorn, a moddable Emergency Lighting System for Roblox.
+pubDate: 2026-04-20T07:46:00.000Z
+tags:
+  - luau
+  - breakdown
+  - project
+# image:
+#   src: >-
+#     https://res.cloudinary.com/dellp9a4z/image/upload/v1776091800/basic-blog_ouz5xk.jpg
+#   alt: >-
+#     Screenshot of the "Daniel Adrian" blog homepage featuring a dark UI and three featured articles with hand-drawn, sketch-style illustrations on a textured tan background.
+---
+
+**LightBorn** is a moddable Emergency Lighting System made for the Roblox ecosystem.
+
+**Features**
+
+- Extensive Lights customisation.
+- An infinite amount of states possible.
+- Dynamic audio configuration (sirens)
+- Drag and drop system
+
+## How it works from the inside
+
+**LightBorn** is a object oriented system, therefore each part is spaced by modules for an easier workflow
+
+```
+LightBorn
+  - Assets // stores default assets
+  - GameAssets // stores shared assets, etc
+  - Helpers // stores types definition
+  - Modules // stores internal modules
+  - src // stores the "source" of the system
+    - Models // stores the logic of each feature
+    - Parts // stores the initiation parts of an object
+```
+
+A basic `GetInstanceAddedSignal` and `GetInstanceRemovedSignal` is used to check for new objects added.
+
+A `AncestryChanged` is also used to check whenever the path of the object is valid, allowing the initiation of the following.
+```lua
+function DecendantsCheck(Ins: Instance)
+	for _,v in next, AllowedLocations do
+		if Ins:IsDescendantOf(v) then return true end
+	end
+	return false
+end
+...
+...
+function OnTag(Ins: Instance)
+	-- new addition
+	if not DecendantsCheck(Ins) then
+		-- the default parent is not valid
+		DecendantsConnection[Ins] = Ins.AncestryChanged:Connect(function(child: Instance, parent: Instance) 
+			-- Parent has changed
+			if parent == nil then
+				DecendantsConnection[Ins]:Disconnect()
+				DecendantsConnection:Remove(Ins)
+				return
+			end	
+			
+			-- the parent is valid
+			if not DecendantsCheck(child) then return end
+			CreateVehicle(Ins)
+		end)
+		return
+	end
+	
+	-- the default parent is valid
+	CreateVehicle(Ins)
+end
+```
+
+### Object initiation
+The object initiation goes as follows *(note: simplified explaination)*
+
+#### 1. Requiring the settings
+Require the settings module with a `pcall()`, return if the settings throw an error
+
+#### 2. Creating the states
+Uses a `TableConcat` to conbine the default required values *(states)* and create `ValueBase`s based on it's type
+
+***NOTE: the type is set via a predefined list of types inside of the types folder***
+```lua
+function TableConcat(t1: {}, t2: {})
+	for n,v in next, t2 do
+		t1[n] = v
+	end
+	return t1
+end
+...
+...
+for n,v in next, TableConcat(RequiredValues, CT) do
+		local InsType = Types.Instances[v["Type"]]
+		if not InsType then Logger.warn("Type is invalid for", n); continue end
+		local Val = Instance.new(InsType)
+		Val.Name = n
+		Val.Parent = Values
+		Val:SetAttribute("IsStatus", v["IsStatus"])
+		if not v["IsNormal"] then
+			data.SpecialNames:Insert(n)
+		end
+		Val.Parent = Values
+	end
+```
+
+#### 3. Insert the logic into the object created
+
+To do so the following is done.
+
+```lua
+local data = System.new()
+...
+...
+for n,v in next, Controller do
+	data[n] = v
+end
+
+for n,v in next, Siren do
+	data[n] = v
+end
+
+for n,v in next, TaskModule do
+	data[n] = v
+end
+```
+
+#### 4. Initiation and state check
+
+The initiazation functions are ran alongside the state value `OnChanged` connection.
+
+### Module initiation
+
+Each Light pattern has it's very own module that has to be configured by LightBorn for good use.
+
+To do the following, LightBorn needs to hook to the module's environement
+
+#### ***but how is that done?***
+
+All light pattern modules are required to have the following:
+- 4 environement variables
+  - Environment - for environment variables
+  - ELS - to store the light instances that can be modified
+  - ELSLocation - where the lights are located
+  - self - the payload itself, the functions and stats
+- a returning function
+
+```lua
+Environment, ELS, self = {}, {}, {}
+
+ELSLocation = XXX
+
+...
+...
+
+return function()
+	return self
+end
+```
+
+Thanks to the returning function, we are able to use `getfenv()` to return the `environment` of the function, therefore the module's environment.
+
+From this, we can *"hook"* into it and set the required `environment` variables.
+
+Those variables includes:
+- task functions (spawn, cancel)
+- a clear function
+- a Initialize function (to setup the light parts)
+- Various Light controlling functions
+
+### how does the lights works?
+ 
+ Each time a light part needs to be initialized, the `newELSData` is called to create an object containing the potential values of the light part.
+ 
+ ```lua
+ Module.newELSData = function(Lighto: BasePart)
+	local Data: Helper.LightData = {}
+	
+	Data.Color = Lighto:FindFirstChild("ColorValue")
+	Data.Light = Lighto:FindFirstChild("LightValue")
+	Data.Lighto = Lighto:FindFirstChild("BrightValue")
+	
+	Data.Status = Lighto:FindFirstChild("Status")
+	Data.GlowColor = Lighto:FindFirstChild("GlowValue")
+	
+	return Data
+ end
+ ```
+ 
+ A `LightoType` attribute also exists to create the needed values for said type to work properly.
+ 
+ From `GlowColor` for effect parts to `Color` for standard parts and GUI parts, it is made to be as easy to extend as possible.
+
+#### **but how does they update?**
+
+LightBorn includes a shared module to automaticly categorize each lights and use the appropriate functions.
+
+To do so, each light parts are checked for specific values to then add a `OnChanged` event to it and automaticly run it if defined by the configuration.
+
+Thanks to the compatibility design of the values, not much work is needed afterward.
+
+***TO NOTE: the colors are given to the module due how the object's data is not replicated to the client.***
+
+***To fix the following, a workaround was created converting the colors table to a single string that would then be re-converted back to a table***
+
+```lua
+local LightoFunctions = require(script.Parent.LightoFunctions)
+
+local Elements = {
+	-- function, run before
+	["ColorValue"] = {execute = LightoFunctions.Color, autorun = true},
+	["LightValue"] = {execute = LightoFunctions.LightBright, autorun = true},
+	["BrightValue"] = {execute = LightoFunctions.LightoBright, autorun = true},
+	
+	["Status"] = {execute = LightoFunctions.Effect, autorun = true},
+}
+
+return function(Part: Instance, Colors: {}, Client: boolean?)
+	if not Part then return end
+	
+	for n,v in next, Elements do
+		task.spawn(function()
+			local FoundEl: ValueBase = Client and Part:WaitForChild(n, 5) or Part:FindFirstChild(n)
+			if not FoundEl then return end
+
+			if not FoundEl:IsA("ValueBase") then return end
+			FoundEl.Changed:Connect(function(Value: any) 
+				v["execute"](Part, Value, Colors)
+			end)
+
+			if v["autorun"] then
+				v["execute"](Part, FoundEl.Value, Colors)
+			end
+		end)
+	end
+end
+```
+
+
+## What now?
+
+While this part covers the main logic of the object handling, **there is a lot more to cover**:
+
+- Task handling & Looping system
+- Siren handling
+- User interface
+- 3D status display
+- Clean up
+
+For this reason and the commplexity of the thing, I *MIGHT* turn this into a multiple parts blog explaining in more details the rest.
+
+*(totally not be being lazy because this is already 250 lines long)*
+
+*(or i'll complete it later)*
+
+In anyway, the source will be available when I actually release this system *(it's soon trust)*

@@ -3,6 +3,8 @@ import { defineConfig, fontProviders } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 
+import expressiveCode from "astro-expressive-code";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://errorcezar.lol/",
@@ -13,5 +15,5 @@ export default defineConfig({
       cssVariable: "--font-roboto",
     },
   ],
-  integrations: [sitemap(), mdx()],
+  integrations: [expressiveCode(), sitemap(), mdx()],
 });
