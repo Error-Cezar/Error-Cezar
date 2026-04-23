@@ -7,14 +7,21 @@ import "../styles.css";
 interface Props {
   title: string;
   description: string;
-  image?: string;
 }
+
+const { title, description } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <Font cssVariable="--font-roboto" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="errorcezar.lol"
+      href={new URL("rss.xml", Astro.site)}
+    />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta property="og:title" content="errorcezar.lol" />
     <meta property="og:type" content="website" />
@@ -39,6 +46,9 @@ interface Props {
       href="https://api.fonts.coollabs.io/css2?family=Inter:wght@300;400;600;700&display=swap"
       rel="stylesheet"
     />
+
+    <title>ErrorCezar - {title}</title>
+    <meta name="description" content={description} />
   </head>
 
   <body>

@@ -16,7 +16,7 @@ const { title, description, image, link } = Astro.props;
     image && (
       <img
         src={image}
-        alt="Descripción de la imagen 2"
+        alt="Image for {title}"
         loading="lazy"
         width="201"
         height="103"
@@ -25,7 +25,7 @@ const { title, description, image, link } = Astro.props;
   }
   <h3>{title}</h3>
   <p>{description}</p>
-  <a href={link}>Learn more</a>
+  <a href={link}>Read</a>
 </article>
 
 <style>

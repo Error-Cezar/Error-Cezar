@@ -5,11 +5,11 @@ import type { ContentEntry } from "../types";
 interface Props {
   title: string;
   description?: string;
-  ogImage?: string;
+  redirect?: string;
   entries: ContentEntry[];
 }
 
-const { title, description = "", entries, ogImage } = Astro.props;
+const { title, description = "", entries, redirect } = Astro.props;
 
 const formatDate = (date: Date) =>
   date.toLocaleDateString("en-US", {
@@ -19,7 +19,7 @@ const formatDate = (date: Date) =>
   });
 ---
 
-<Layout title={title} description={description} image={ogImage}>
+<Layout title={title} description={description}>
   <section id="list-page">
     <header class="list-header">
       <h1>{title}</h1>
@@ -36,7 +36,7 @@ const formatDate = (date: Date) =>
         <ul class="list-grid">
           {entries.map((entry) => (
             <li>
-              <a class="list-card" href={`/projects/${entry.id}`}>
+              <a class="list-card" href={`/${redirect}/${entry.id}`}>
                 {entry.data.image?.src && (
                   <div class="card-image">
                     <img

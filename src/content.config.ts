@@ -13,6 +13,7 @@ const baseSchema = z.object({
   draft: z.boolean().default(false),
   featured: z.boolean().default(false),
   pubDate: z.coerce.date(),
+  editDate: z.coerce.date().optional(),
   title: z.string().min(1, { message: "Title cannot be empty." }),
   description: z.string().min(1, { message: "Description cannot be empty." }),
   tags: z.array(z.string()).default([]),
@@ -30,6 +31,12 @@ const projects = defineCollection({
   }),
 });
 
+const blog = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/blog" }),
+  schema: baseSchema,
+});
+
 export const collections = {
   projects,
+  blog,
 };

@@ -27,9 +27,9 @@ body {
   overflow-x: hidden;
   display: grid;
   grid-template-areas:
-    "main main"
-    "footer footer";
-  grid-template-columns: 1fr 1fr;
+    "main"
+    "footer";
+  grid-template-columns: 1fr;
   grid-template-rows: 1fr auto;
 }
 p,
@@ -40,6 +40,7 @@ h4,
 h5,
 h6 {
   overflow-wrap: break-word;
+  word-break: break-word;
 }
 p {
   text-wrap: pretty;
@@ -101,12 +102,14 @@ aside-component {
 
 main {
   grid-area: main;
+  width: 90%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 10px;
   display: flex;
   flex-direction: column;
   gap: 4rem;
+  min-width: 0;
 }
 footer {
   grid-area: footer;
@@ -121,6 +124,7 @@ footer {
   flex-direction: column;
   outline: 1px solid var(--primary-color);
   border-radius: 10px;
+  min-width: 0;
   h2 {
     margin: 0;
     transform: translateY(-3rem);

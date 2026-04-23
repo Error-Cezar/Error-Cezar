@@ -9,27 +9,34 @@ interface Props {
 
 const { entry } = Astro.props;
 
-const { Content, headings } = await render(entry);
+const { Content } = await render(entry);
 
 const formattedDate = new Date(entry.data.pubDate).toLocaleDateString("en-US", {
   year: "numeric",
   month: "long",
   day: "numeric",
 });
+
+const formattedEditDate = entry.data.editDate
+  ? new Date(entry.data.editDate).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    })
+  : null;
 ---
 
-<Layout
-  title={entry.data.title}
-  description={entry.data.description}
-  image={entry.data.image?.src}
->
+<Layout title={entry.data.title} description={entry.data.description}>
   <article id="detail-post">
     <header class="detail-header">
       <h1>{entry.data.title}</h1>
       <p class="detail-description">{entry.data.description}</p>
 
       <div class="detail-meta">
-        <time datetime={entry.data.pubDate.toString()}>{formattedDate}</time>
+        <time datetime={entry.data.pubDate.toString()}
+          >{formattedDate}
+          {formattedEditDate ? ` | Edited on ${formattedEditDate}` : ""}
+        </time>
 
         {
           entry.data.tags.length > 0 && (
