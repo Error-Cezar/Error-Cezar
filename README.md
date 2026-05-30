@@ -19,3 +19,5 @@ Hello, im **ErrorCezar, error, whatever you know me as**
 Im an european based individual, developer and full time cat enjoyer.
 
 To learn more about me, visit **https://errorcezar.lol/**
+
+> <img width="200px" src="assets/badapplesmall.svg">!
