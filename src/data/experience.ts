@@ -11,10 +11,10 @@ export const experience = [
     duration: 'July 2026 - Present',
     responsibilities: [
       'A minecraft mod of a popular ARG character including immersive AI interactions',
-      'Working alongside a team of 3 other developers",
+      'Working alongside a team of 3 other developers',
       'Rewrote the AI interaction system (system prompt, tool calls, etc)',
-      'Automated version releases and pushed for a better Continuous Integration",
-      'Currently taking part in the development of version 6"
+      'Automated version releases and pushed for a better Continuous Integration',
+      'Currently taking part in the development of version 6'
     ],
   },
   {
