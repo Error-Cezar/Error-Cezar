@@ -19,13 +19,19 @@ const { title, description } = Astro.props;
     <link
       rel="alternate"
       type="application/rss+xml"
-      title="errorcezar.lol"
+      title="errorcezar.dev"
       href={new URL("rss.xml", Astro.site)}
     />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <meta property="og:title" content="errorcezar.lol" />
+    <meta property="og:title" content="errorcezar.dev" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://errorcezar.lol" />
+    <meta property="og:url" content="https://errorcezar.dev" />
+
+  	<meta name="twitter:card" content="summary">
+  	<meta name="twitter:title" content="errorcezar.dev">
+  	<meta name="twitter:description" content="A place that may or may not be owned by someone called 'ErrorCezar">
+  	<meta name="twitter:image" content={"/clark.png"}>
+
     <meta
       property="og:description"
       content="A place that may or may not be owned by someone called 'ErrorCezar'"
