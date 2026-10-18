@@ -12,7 +12,7 @@ const imageSchema = z
 const baseSchema = z.object({
   draft: z.boolean().default(false),
   featured: z.boolean().default(false),
-  pubDate: z.coerce.date(),
+  pubDate: z.coerce.date().optional(),
   editDate: z.coerce.date().optional(),
   title: z.string().min(1, { message: "Title cannot be empty." }),
   description: z.string().min(1, { message: "Description cannot be empty." }),
@@ -31,6 +31,14 @@ const projects = defineCollection({
   }),
 });
 
+const showcases = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/showcases" }),
+  schema: baseSchema.extend({
+    repoUrl: z.url().optional(),
+    demoUrl: z.url().optional(),
+  }),
+});
+
 const blog = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/blog" }),
   schema: baseSchema,
@@ -39,4 +47,5 @@ const blog = defineCollection({
 export const collections = {
   projects,
   blog,
+  showcases,
 };

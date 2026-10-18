@@ -1,0 +1,17 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../Layouts/BlogPost.astro";
+
+export async function getStaticPaths() {
+  const showcases = await getCollection("showcases", ({ data }) => !data.draft);
+
+  return showcases.map((showcase) => ({
+    params: { id: showcase.id },
+    props: { showcase: showcase },
+  }));
+}
+
+const { showcase } = Astro.props;
+---
+
+<Layout entry={showcase} />

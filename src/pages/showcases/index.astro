@@ -1,0 +1,15 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../Layouts/ListLayout.astro";
+
+const showcases = (
+  await getCollection("showcases", ({ data }) => !data.draft)
+).map((p) => p);
+---
+
+<Layout
+  title="Showcases"
+  description="Showcases of my projects."
+  redirect="showcases"
+  entries={showcases}
+/>

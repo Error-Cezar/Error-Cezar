@@ -11,11 +11,13 @@ const { entry } = Astro.props;
 
 const { Content } = await render(entry);
 
-const formattedDate = new Date(entry.data.pubDate).toLocaleDateString("en-US", {
-  year: "numeric",
-  month: "long",
-  day: "numeric",
-});
+const formattedDate = entry.data.pubDate
+  ? new Date(entry.data.pubDate).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    })
+  : null;
 
 const formattedEditDate = entry.data.editDate
   ? new Date(entry.data.editDate).toLocaleDateString("en-US", {
@@ -33,10 +35,14 @@ const formattedEditDate = entry.data.editDate
       <p class="detail-description">{entry.data.description}</p>
 
       <div class="detail-meta">
-        <time datetime={entry.data.pubDate.toString()}
-          >{formattedDate}
-          {formattedEditDate ? ` | Edited on ${formattedEditDate}` : ""}
-        </time>
+        {
+          entry.data.pubDate && (
+            <time datetime={entry.data.pubDate.toString()}>
+              {formattedDate}
+              {formattedEditDate ? ` | Edited on ${formattedEditDate}` : ""}
+            </time>
+          )
+        }
 
         {
           entry.data.tags.length > 0 && (
