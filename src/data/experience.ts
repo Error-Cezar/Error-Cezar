@@ -14,7 +14,7 @@ export const experience = [
       'Working alongside a team of 3 other developers',
       'Rewrote the AI interaction system (system prompt, tool calls, etc)',
       'Automated version releases and pushed for a better Continuous Integration',
-      'Worked on the development of version 6, the final version of the mod'
+      'Worked on the development of version 6, the final version of the mod',
     ],
   },
   {
